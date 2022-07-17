@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap');
+
+.shoe-1 {
+    position: fixed;
+    opacity: 0;
+    top: 10vw;
+    animation: fade 5s 1s ease-in-out infinite;
+    transform: rotateX(60deg);
+}
+
+.shoe-2 {
+    position: fixed;
+    opacity: 0;
+    top: 20vw;
+    left: 10vw;
+    animation: fade 5s 1.5s ease-in-out infinite;
+    transform: rotateX(60deg);
+}
+
+.shoe-3 {
+    position: fixed;
+    opacity: 0;
+    top: 30vw;
+    left: 20vw;
+    animation: fade 5s 2s ease-in-out infinite;
+    transform: rotateX(60deg);
+}
+
+.shoe-4 {
+    position: fixed;
+    opacity: 0;
+    top: 40vw;
+    left: 30vw;
+    animation: fade 5s 2.5s ease-in-out infinite;
+    transform: rotateX(60deg);
+}
+
+.shoe-5 {
+    position: fixed;
+    opacity: 0;
+    top: 50vw;
+    left: 42vw;
+    animation: fade 5s 3s ease-in-out infinite;
+    transform: rotateX(60deg);
+}
+
+.shoe-6 {
+    position: fixed;
+    opacity: 0;
+    top: 60vw;
+    left: 52vw;
+    animation: fade 5s 3.5s ease-in-out infinite;
+    transform: rotateX(60deg);
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.back-1 {
+    background-color: brown;
+    position: fixed;
+    width: 4vw;
+    height: 3vh;
+    border-radius: 84% 41% 49% 81% / 92% 85% 85% 97%;
+    left: 15vw;
+}
+
+.front-1 {
+    background-color: brown;
+    position: fixed;
+    width: 8vw;
+    height: 3vh;
+    border-radius: 28% 72% 74% 26% / 53% 50% 50% 47%;
+    left: 20vw;
+}
+
+.back-2 {
+    background-color: brown;
+    position: absolute;
+    width: 4vw;
+    height: 3vh;
+    border-radius: 84% 41% 49% 81% / 92% 85% 85% 97%;
+    left: 15vw;
+}
+
+.front-2 {
+    background-color: brown;
+    position: absolute;
+    width: 8vw;
+    height: 3vh;
+    border-radius: 28% 72% 74% 26% / 53% 50% 50% 47%;
+    left: 20vw;
+}
+
+.back-3 {
+    background-color: brown;
+    position: absolute;
+    width: 4vw;
+    height: 3vh;
+    border-radius: 84% 41% 49% 81% / 92% 85% 85% 97%;
+    left: 15vw;
+}
+
+.front-3 {
+    background-color: brown;
+    position: absolute;
+    width: 8vw;
+    height: 3vh;
+    border-radius: 28% 72% 74% 26% / 53% 50% 50% 47%;
+    left: 20vw;
+}
+
+.back-4 {
+    background-color: brown;
+    position: absolute;
+    width: 4vw;
+    height: 3vh;
+    border-radius: 84% 41% 49% 81% / 92% 85% 85% 97%;
+    left: 15vw;
+}
+
+.front-4 {
+    background-color: brown;
+    position: absolute;
+    width: 8vw;
+    height: 3vh;
+    border-radius: 28% 72% 74% 26% / 53% 50% 50% 47%;
+    left: 20vw;
+}
+
+.back-5 {
+    background-color: brown;
+    position: absolute;
+    width: 4vw;
+    height: 3vh;
+    border-radius: 84% 41% 49% 81% / 92% 85% 85% 97%;
+    left: 15vw;
+}
+
+.front-5 {
+    background-color: brown;
+    position: absolute;
+    width: 8vw;
+    height: 3vh;
+    border-radius: 28% 72% 74% 26% / 53% 50% 50% 47%;
+    left: 20vw;
+}
+
+.back-6 {
+    background-color: brown;
+    position: absolute;
+    width: 4vw;
+    height: 3vh;
+    border-radius: 84% 41% 49% 81% / 92% 85% 85% 97%;
+    left: 15vw;
+}
+
+.front-6 {
+    background-color: brown;
+    position: absolute;
+    width: 8vw;
+    height: 3vh;
+    border-radius: 28% 72% 74% 26% / 53% 50% 50% 47%;
+    left: 20vw;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(20px);
+    }
+
+    50% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes move {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.7);
+    }
+}
+
+@keyframes fade2 {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.words {
+    position: fixed;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.one {
+    position: fixed;
+    font-size: 80px;
+    letter-spacing: 7px;
+    left: 33vw;
+    top: 16vw;
+    animation: fade3 4s 2s linear forwards;
+    opacity: 0;
+}
+
+@keyframes fade3 {
+    0%, 100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.two {
+    position: fixed;
+    opacity: 0;
+    letter-spacing: 3px;
+    bottom: 36vw;
+    left: 15vw;
+    animation: fade3 4s 7s linear forwards;
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate(-1px, 0);
+    }
+
+    20%, 80% {
+        transform: translate(3px, 5px);
+    }
+
+    30%, 50%, 70% {
+        transform: translate(-6px, -5px);
+    }
+
+    40%, 60% {
+        transform: translate(4px, 0);
+    }
+}
+
+.third {
+    position: fixed;
+    font-size: 40px;
+    letter-spacing: 4px;
+    bottom: 33vw;
+    left: 5vw;
+    opacity: 0;
+    animation: shake 3s linear infinite, fade2 3s 11s linear forwards;
+}
