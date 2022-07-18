@@ -29,7 +29,6 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="sign_in" element={<Register full={true} />} />
               <Route path="terms" element={<Terms />} />
-              <Route path="forgot_password" element={<ForgotPassword />} />
               <Route path="home" element={<Home />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
