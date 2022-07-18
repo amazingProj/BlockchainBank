@@ -1,65 +1,37 @@
 import React, { useState } from "react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import Fullpage, {
-  FullPageSections,
-  FullpageSection,
-  FullpageNavigation,
-} from "@ap.cx/react-fullpage";
-
 import Navbar from "../components/navbar";
 import Chart from "../components/chart";
+import Dollar from "../components/dollar";
 const Home = (props) => {
   const [nav, setNav] = useState(false);
 
   const handleClick = () => setNav(!nav);
 
-  const SectionStyle = {
-    height: "100vh",
-    width: "100%",
-  };
-
   return (
     <div className="bg-white h-screen">
-      <Fullpage>
-        <FullPageSections>
-          <FullpageSection style={SectionStyle}>
-            <Navbar />
-
-            <br />
-            <br />
-            <br />
-            <hr id="home" className="border-hidden" />
-
-            <Chart />
-          </FullpageSection>
-          <FullpageSection style={SectionStyle}>
-            <Navbar />
-
-            <br />
-            <br />
-            <br />
-
-            <hr id="withdraws" />
-
-            <p>Withdraws</p>
-          </FullpageSection>
-          <FullpageSection style={SectionStyle}>
-            <hr id="new_account" className="border-hidden" />
-
-            <p>New account</p>
-          </FullpageSection>
-          <FullpageSection style={SectionStyle}>
-            <hr id="transactions" className="border-hidden" />
-
-            <p>Transactions</p>
-          </FullpageSection>
-        </FullPageSections>
-      </Fullpage>
+      <Navbar />
 
       <br />
       <br />
       <br />
       <br />
+      <hr id="home" className="border-hidden" />
+
+      <Dollar />
+      <Chart />
+
+      <hr id="withdraws" className="border-hidden" />
+
+      <p>Withdraws</p>
+
+      <hr id="new_account" className="border-hidden" />
+
+      <p>New account</p>
+
+      <hr id="transactions" className="border-hidden" />
+
+      <p>Transactions</p>
 
       <hr id="transfer" className="border-hidden" />
 
