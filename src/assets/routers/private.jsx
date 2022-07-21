@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 
-const Private = ({ component: Component }) => {
+const Private = ({ component: Component, anotherComponent }) => {
   const [isAuth, setIsAuth] = useState(true);
+  const [isAdminAuth, setIsAdminAuth] = useState(true);
   const location = useLocation();
   const MINUTE_MS = 60000;
 
@@ -25,7 +26,11 @@ const Private = ({ component: Component }) => {
   }, []);
 
   return isAuth ? (
-    Component
+    isAdminAuth ? (
+      anotherComponent
+    ) : (
+      Component
+    )
   ) : (
     <Navigate to={location.pathname.replace("home", "login")} />
   );

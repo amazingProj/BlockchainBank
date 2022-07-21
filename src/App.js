@@ -4,7 +4,8 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import PageNotFound from "./pages/not_found";
 import Terms from "./pages/terms";
-import Home from "./pages/home";
+import HomeOne from "./pages/home_one";
+import HomeTwo from "./pages/home_two";
 import fullScreen from "./assets/icons/fullscreen.png";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import exitFullScreen from "./assets/icons/exit-full-screen.png";
@@ -57,7 +58,15 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="sign_in" element={<Register full={true} />} />
               <Route path="terms" element={<Terms />} />
-              <Route path="home" element={<Private component={<Home />} />} />
+              <Route
+                path="home"
+                element={
+                  <Private
+                    component={<HomeOne />}
+                    anotherComponent={<HomeTwo />}
+                  />
+                }
+              />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </div>
