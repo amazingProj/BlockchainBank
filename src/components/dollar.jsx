@@ -5,14 +5,22 @@ const Dollar = () => {
   const oneDollarToILS = () => {
     fx.base = "USD";
     fx.rates = {
-      ILS: 0.745101, // eg. 1 USD === 0.745101 EUR
-      GBP: 0.64771, // etc...
-      USD: 1, // always include the base rate (1:1)
+      ILS: 3.14,
+      GBP: 0.64771,
+      USD: 1,
     };
     const oneDollar = fx(1).from("USD").to("ILS");
     return oneDollar;
   };
-  return <div>{oneDollarToILS()}</div>;
+  return (
+    <div>
+      <h2>Dollar is </h2>
+      <div className="flex">
+        {oneDollarToILS()}
+        <p>ILS</p>
+      </div>
+    </div>
+  );
 };
 
 export default Dollar;

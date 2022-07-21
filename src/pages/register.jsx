@@ -1,8 +1,36 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import arrowBack from "../components/assets/icons/back-arrow-icon.png";
+import axios from "axios";
 
 const Register = (props) => {
+  const firstName = useRef();
+  const lastName = useRef();
+  const email = useRef();
+  const password = useRef();
+  const confirmedPassword = useRef();
+  const [terms, setTerms] = useState();
+
+  const termsClicked = () => {
+    setTerms(!terms);
+  };
+
+  const createAccount = () => {
+    let passwordVAR = password.current.value;
+    console.log(passwordVAR);
+    if (passwordVAR == confirmedPassword.current.value && terms) {
+      let user = {};
+      user["username"] = email.current.value;
+      user["password"] = passwordVAR;
+      user["firstName"] = firstName.current.firstName;
+      user["lastName"] = lastName.current.firstName;
+
+      axios.post("http://localhost:4000/users/register", user).then((res) => {
+        console.log(res.data);
+      });
+    }
+  };
+
   return (
     <div className="bg-white">
       <a
@@ -20,6 +48,7 @@ const Register = (props) => {
               <div className="mb-6 text-3xl">LevCoin Bank</div>
               <div className="mb-6">
                 <input
+                  ref={firstName}
                   type="text"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   placeholder="First Name"
@@ -27,6 +56,7 @@ const Register = (props) => {
               </div>
               <div className="mb-6">
                 <input
+                  ref={lastName}
                   type="text"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   id="exampleFormControlInput2"
@@ -36,6 +66,7 @@ const Register = (props) => {
               {/* Email input */}
               <div className="mb-6">
                 <input
+                  ref={email}
                   type="text"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   id="exampleFormControlInput2"
@@ -45,6 +76,7 @@ const Register = (props) => {
               {/* Password input */}
               <div className="mb-6">
                 <input
+                  ref={password}
                   type="password"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   id="exampleFormControlInput2"
@@ -54,6 +86,7 @@ const Register = (props) => {
 
               <div className="mb-6">
                 <input
+                  ref={confirmedPassword}
                   type="password"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   id="exampleFormControlInput2"
@@ -67,6 +100,7 @@ const Register = (props) => {
                   type="checkbox"
                   value=""
                   className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  onClick={termsClicked}
                 />
                 <label
                   for="link-checkbox"
@@ -86,6 +120,7 @@ const Register = (props) => {
                 <button
                   type="button"
                   className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                  onClick={createAccount}
                 >
                   Create Account
                 </button>

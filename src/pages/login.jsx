@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useRef } from "react";
+import axios from "axios";
 
 const Login = () => {
+  const username = useRef();
+  const password = useRef();
+
   const login = () => {
-    let boolean = true;
-    if (boolean) {
-      window.location.replace("/home");
-    }
+    let user = {};
+    user["username"] = username.current.value;
+    user["password"] = password.current.value;
+
+    axios.post("http://localhost:4000/users/login", user).then((res) => {
+      let boolean = res.data == "Successfully Authenticated" ? true : false;
+      if (boolean) {
+        window.location.replace("/home");
+      }
+    });
   };
 
   return (
@@ -28,6 +38,7 @@ const Login = () => {
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     id="exampleFormControlInput2"
                     placeholder="Email address"
+                    ref={username}
                   />
                 </div>
                 {/* Password input */}
@@ -37,6 +48,7 @@ const Login = () => {
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     id="exampleFormControlInput2"
                     placeholder="Password"
+                    ref={password}
                   />
                 </div>
                 <div className="flex justify-between items-center mb-6">

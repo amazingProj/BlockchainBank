@@ -53,7 +53,7 @@ function App() {
         <BrowserRouter>
           <div>
             <Routes>
-              <Route path="" element={<Navigate to="login" />} />
+              <Route path="" element={<Navigate to="home" />} />
               <Route path="login" element={<Login />} />
               <Route path="sign_in" element={<Register full={true} />} />
               <Route path="terms" element={<Terms />} />
