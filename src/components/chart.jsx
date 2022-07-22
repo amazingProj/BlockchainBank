@@ -88,11 +88,11 @@ const Chart = ({ info, stockFullName, stockShortName }) => {
               <span>
                 {!stockShortName ? info.stockShortName : stockShortName}
               </span>
-              &nbsp;&nbsp;-&nbsp;&nbsp;Aug 2nd 4:10pm AEST
+              &nbsp;&nbsp;-&nbsp;&nbsp;{info.dateRange}
             </h6>
-            <div className="flex w-full items-end mb-6">
+            <div className="flex w-full items-end mb-2">
               <span className="block leading-none text-3xl text-gray-800">
-                {numberToFix(info.price.current, 3)}
+                {numberToFix(info.price.current, 3) + "$"}
               </span>
               <span className="block leading-5 text-sm ml-4 text-green-500">
                 {`${info.price.high - info.price.low < 0 ? "▼" : "▲"} ${(
@@ -103,50 +103,28 @@ const Chart = ({ info, stockFullName, stockShortName }) => {
                 ).toFixed(3)}%)`}
               </span>
             </div>
+            <div className="block leading-none text-xl text-gray-800 mb-4">
+              {numberToFix(info.price.current * 3, 3) + " ILS"}
+            </div>
+            <div className="block leading-none text-xl text-gray-800 mb-4">
+              {1.13 + " LevCoin"}
+            </div>
             <div className="flex w-full text-xs">
               <div className="flex w-5/12">
-                <div className="flex-1 pr-3 text-left font-semibold">Open</div>
+                <div className="flex-1 pr-3 text-left font-semibold">
+                  LevCoin
+                </div>
                 <div className="flex-1 px-3 text-right">
-                  {info.price.open.toFixed(3)}
+                  {info.price.open.toFixed(3) + " ILS"}
                 </div>
               </div>
               <div className="flex w-7/12">
                 <div className="flex-1 px-3 text-left font-semibold">
-                  Market Cap
+                  Dollar
                 </div>
                 <div className="flex-1 pl-3 text-right">
-                  {formatter(info.price.cap)}
+                  {formatter(info.price.cap) + " ILS"}
                 </div>
-              </div>
-            </div>
-            <div className="flex w-full text-xs">
-              <div className="flex w-5/12">
-                <div className="flex-1 pr-3 text-left font-semibold">High</div>
-                <div className="px-3 text-right">
-                  {info.price.high.toFixed(3)}
-                </div>
-              </div>
-              <div className="flex w-7/12">
-                <div className="flex-1 px-3 text-left font-semibold">
-                  P/E ratio
-                </div>
-                <div className="pl-3 text-right">
-                  {info.price.ratio.toFixed(2)}
-                </div>
-              </div>
-            </div>
-            <div className="flex w-full text-xs">
-              <div className="flex w-5/12">
-                <div className="flex-1 pr-3 text-left font-semibold">Low</div>
-                <div className="px-3 text-right">
-                  {info.price.low.toFixed(3)}
-                </div>
-              </div>
-              <div className="flex w-7/12">
-                <div className="flex-1 px-3 text-left font-semibold">
-                  Dividend yield
-                </div>
-                <div className="pl-3 text-right">{`${info.price.dividend}%`}</div>
               </div>
             </div>
           </div>

@@ -7,57 +7,63 @@ const Home = (props) => {
     <div className="bg-white h-screen">
       <Navbar isManager={props.isManager} />
 
-      <br />
-      <br />
-      <br />
-      <br />
-      <hr id="home" className="border-hidden" />
+      {props.isManager ? (
+        <div></div>
+      ) : (
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <hr id="home" className="border-hidden" />
 
-      <HomeComponent />
+          <HomeComponent />
 
-      <br />
-      <hr id="withdraws" className="border-hidden" />
+          <br />
+          <hr id="withdraws" className="border-hidden" />
 
-      <p>Withdraws</p>
+          <p>Withdraws</p>
 
-      <p>History</p>
-      <p>date: 21/7/22 0.2 Lev Coin equals to 2.1 ILS</p>
+          <p>History</p>
+          <p>date: 21/7/22 0.2 Lev Coin equals to 2.1 ILS</p>
 
-      <br />
+          <br />
 
-      <hr id="new_account" className="border-hidden" />
+          <hr id="new_account" className="border-hidden" />
 
-      <p>New account</p>
+          <p>New account</p>
 
-      <p>Create new account </p>
-      <p>Enter the required fields </p>
-      <p>transfer an initial amount to transfer to this new account </p>
-      <p> You want to transfer 2 lev coins </p>
+          <p>Create new account </p>
+          <p>Enter the required fields </p>
+          <p>transfer an initial amount to transfer to this new account </p>
+          <p> You want to transfer 2 lev coins </p>
 
-      <br />
+          <br />
 
-      <hr id="transactions" className="border-hidden" />
+          <hr id="transactions" className="border-hidden" />
 
-      <p>Transactions</p>
+          <p>Transactions</p>
 
-      <p>date 21/7/22 you received money 0.6 LevCoin</p>
+          <p>date 21/7/22 you received money 0.6 LevCoin</p>
 
-      <p>You transfer two lev coins to another account number 2223231</p>
+          <p>You transfer two lev coins to another account number 2223231</p>
 
-      <br />
-      <hr id="transfer" className="border-hidden" />
+          <br />
+          <hr id="transfer" className="border-hidden" />
 
-      <p>Transfer</p>
-      <p>specify the amount to transfer</p>
-      <p>sure to transfer 2 lev coins</p>
+          <p>Transfer</p>
+          <p>specify the amount to transfer</p>
+          <p>sure to transfer 2 lev coins</p>
 
-      <br />
-      <hr id="my_loans" className="border-hidden" />
+          <br />
+          <hr id="my_loans" className="border-hidden" />
 
-      <p>My loans</p>
-      <p>date 21/7/22 5 lev coins from bank until 21/7/22</p>
-      <p>interest of 0.05 in total means 0.002 per Month </p>
-      <p>You almost pay all the money</p>
+          <p>My loans</p>
+          <p>date 21/7/22 5 lev coins from bank until 21/7/22</p>
+          <p>interest of 0.05 in total means 0.002 per Month </p>
+          <p>You almost pay all the money</p>
+        </div>
+      )}
     </div>
   );
 };

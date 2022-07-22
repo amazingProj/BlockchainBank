@@ -3,13 +3,14 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const Private = ({ component: Component, anotherComponent }) => {
   const [isAuth, setIsAuth] = useState(true);
-  const [isAdminAuth, setIsAdminAuth] = useState(true);
+  const [isAdminAuth, setIsAdminAuth] = useState(false);
   const location = useLocation();
   const MINUTE_MS = 60000;
 
   useEffect(() => {
     const interval = setInterval(() => {
       console.log("Logs every minute");
+      // api - username, password
       let res = "";
       if (res == "admin authenticated") {
         setIsAuth(true);

@@ -3,11 +3,11 @@ import fx from "money";
 
 const Dollar = () => {
   const oneDollarToILS = () => {
-    fx.base = "USD";
+    fx.base = "ILS";
     fx.rates = {
-      ILS: 3.14,
-      GBP: 0.64771,
-      USD: 1,
+      ILS: 1,
+      GBP: 2,
+      USD: 3.14,
     };
     const oneDollar = fx(1).from("USD").to("ILS");
     return oneDollar;
