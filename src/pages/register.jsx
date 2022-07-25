@@ -94,6 +94,7 @@ const Register = (props) => {
                 />
               </div>
 
+              
               <div class="mb-6 flex items-center">
                 <input
                   id="link-checkbox"

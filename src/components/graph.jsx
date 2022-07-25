@@ -65,7 +65,7 @@ const buildData = ({ chartData }) => ({
 const Graph = ({ info }) => {
   const data = buildData(info);
   return (
-    <div className="flex w-full md:w-1/2 px-5 pb-4 pt-8 bg-indigo-500 text-white items-center">
+    <div className="flex w-full bg-indigo-500 text-white items-center">
       <Line type="line" data={data} options={options} />
     </div>
   );
