@@ -52,7 +52,45 @@ const HomeComponent = () => {
     result += formatDate(new Date());
     return result;
   };
-  const getAllPrevMonth = () => {};
+
+  const getAllPrevWeek = () => {
+    let result = [];
+    let Week = 7;
+    let now = new Date();
+    let one, two, three;
+    let tempArray;
+    for (let i = 0; i < Week; ++i) {
+      tempArray = now.toDateString().split(" ").slice(0, 3);
+      one = tempArray[0];
+      two = tempArray[1];
+      three = tempArray[2];
+      result[i] = `${one} ${two} ${three}`;
+      now.setDate(now.getDate() - 1);
+    }
+    return result;
+  };
+
+  const getAllPrevMonth = () => {
+    let result = [];
+    let Month = 30;
+    let now = new Date();
+    let two, three;
+    let tempArray;
+    for (let i = 0; i < Month; ++i) {
+      if (i % 5 === 0) {
+        tempArray = now.toDateString().split(" ").slice(0, 3);
+        two = tempArray[1];
+        three = tempArray[2];
+        result[i] = `${three} in ${two}`;
+      } else {
+        result[i] = "";
+      }
+      now.setDate(now.getDate() - 1);
+    }
+    return result;
+  };
+
+  console.log(getAllPrevWeek());
 
   const data = {
     stockFullName: "SW Limited.",
@@ -68,45 +106,7 @@ const HomeComponent = () => {
       dividend: 1.67,
     },
     chartData: {
-      labels: [
-        "21/7",
-        "",
-        "",
-        "",
-        "25/7",
-        "",
-        "",
-        "",
-        "28/7",
-        "",
-        "",
-        "",
-        "4/8",
-        "",
-        "",
-        "",
-        "4/8",
-        "",
-        "",
-        "",
-        "4/8",
-        "",
-        "",
-        "",
-        "4/8",
-        "",
-        "",
-        "",
-        "4/8",
-        "",
-        "",
-        "",
-        "4/8",
-        "",
-        "",
-        "",
-        "4/8",
-      ],
+      labels: getAllPrevWeek(),
       data: [
         2.23, 2.215, 2.22, 2.25, 2.245, 2.27, 2.28, 2.29, 2.3, 2.29, 2.325,
         2.325, 2.32,
@@ -115,6 +115,28 @@ const HomeComponent = () => {
   };
 
   const graphTwoData = {
+    stockFullName: "SW Limited.",
+    stockShortName: "ASX:SFW",
+    dateRange: "Aug 2nd 4:10pm AEST",
+    price: {
+      current: 2.32,
+      open: 2.23,
+      low: 2.215,
+      high: 2.325,
+      cap: 3.14,
+      ratio: 20.1,
+      dividend: 1.67,
+    },
+    chartData: {
+      labels: getAllPrevMonth(),
+      data: [
+        2.23, 2.215, 2.22, 2.25, 2.245, 2.27, 2.28, 2.29, 2.3, 2.29, 2.325,
+        2.325, 2.32,
+      ],
+    },
+  };
+
+  const graphThreeData = {
     stockFullName: "SW Limited.",
     stockShortName: "ASX:SFW",
     dateRange: "Aug 2nd 4:10pm AEST",
@@ -153,7 +175,7 @@ const HomeComponent = () => {
       <div>
         <div className="text-center mt-4 mb-4">
           <div className="text-3xl">Weekly account analytics and balance</div>
-          <div className="text-xl">The most right is current date.</div>
+          <div className="text-xl">The most left is current day.</div>
         </div>
         <Chart
           info={data}
@@ -161,12 +183,23 @@ const HomeComponent = () => {
           stockShortName="Balance."
         />
         <br />
-        <div className="text-center mt-4 mb-4">
-          <div className="text-3xl">Annual account analytics</div>
-          <div className="text-xl">The most right is current month.</div>
+        <div>
+          <div className="text-center mt-4 mb-4">
+            <div className="text-3xl">Monthly account analytics</div>
+            <div className="text-xl">The most left is current date.</div>
+          </div>
+
+          <Graph info={graphTwoData} />
         </div>
 
-        <Graph info={graphTwoData} />
+        <div>
+          <div className="text-center mt-4 mb-4">
+            <div className="text-3xl">Annual account analytics</div>
+            <div className="text-xl">The most left is current month.</div>
+          </div>
+
+          <Graph info={graphThreeData} />
+        </div>
       </div>
     </div>
   );
