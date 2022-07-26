@@ -5,8 +5,12 @@ import Axios from "axios";
 const Private = ({ component, anotherComponent, notFound }) => {
   var [isAuth, setIsAuth] = useState(true);
   var [isPending, setIsPending] = useState(false);
-  var [isAdminAuth, setIsAdminAuth] = useState(true);
+  var [isAdminAuth, setIsAdminAuth] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    console.log(isAuth);
+  }, [isAuth]);
 
   useEffect(() => {
     if (!isAuth) {

@@ -73,7 +73,7 @@ const Chart = ({ info, stockFullName, stockShortName }) => {
   return (
     <>
       <div
-        className="rounded shadow-xl overflow-hidden w-full md:flex"
+        className="rounded shadow-xl overflow-hidden w-full md:flex ml-40"
         style={{ maxWidth: "900px" }}
       >
         <div className="flex w-full md:w-1/2 px-5 pb-4 pt-8 bg-indigo-500 text-white items-center">
