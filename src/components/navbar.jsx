@@ -6,8 +6,13 @@ const Navbar = (props) => {
 
   const handleClick = () => setNav(!nav);
 
+  const logout = () => {
+    localStorage.setItem("authenticated", {});
+    window.location.replace("/home");
+  };
+
   return (
-    <div className="w-5/6 h-[60px] z-10 bg-zinc-200 fixed drop-shadow-lg">
+    <div className="w-full h-[60px] z-10 bg-zinc-200 fixed drop-shadow-lg">
       <div className="flex">
         <div className="hidden md:block mb-6 text-5xl text-blue-700 mr-5">
           LevCoin
@@ -19,7 +24,15 @@ const Navbar = (props) => {
                 <div className="flex items-center">
                   {props.isManager && (
                     <ul className="hidden md:flex text-xl">
+                      <li className="hover:bg-zinc-300 mt-2">Home</li>
                       <li className="hover:bg-zinc-300 mt-2">Withdraws</li>
+                      <li className="hover:bg-zinc-300 mt-2">
+                        Manage Accounts
+                      </li>
+                      <li className="hover:bg-zinc-300 mt-2">Users</li>
+                      <li className="hover:bg-zinc-300 mt-2" onClick={logout}>
+                        Logout
+                      </li>
                     </ul>
                   )}
 
@@ -44,7 +57,12 @@ const Navbar = (props) => {
                       <li className="hover:bg-zinc-300 mt-2 mr-10">
                         <a href="#my_loans">My loans</a>
                       </li>
-                      <li className="hover:bg-zinc-300 mt-2 mr-10">Logout</li>
+                      <li
+                        className="hover:bg-zinc-300 mt-2 mr-10"
+                        onClick={logout}
+                      >
+                        Logout
+                      </li>
                     </ul>
                   )}
 
@@ -87,7 +105,10 @@ const Navbar = (props) => {
               <a href="#my_loans">My loans</a>
             </li>
 
-            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+            <li
+              className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full"
+              onClick={logout}
+            >
               Logout
             </li>
           </ul>

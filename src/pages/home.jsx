@@ -1,67 +1,96 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/navbar";
 import HomeComponent from "../components/home";
+import Loading from "../components/loading";
+import Withdraw from "../components/withdraw";
+import NewAccountForm from "../components/new_account_form";
+import Transactions from "../components/transactions";
+import Transfer from "../transfer";
+import Loans from "../components/loans";
 
 const Home = (props) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 3000);
+  }, []);
+
   return (
-    <div className="bg-white h-screen">
-      <Navbar isManager={props.isManager} />
-
-      {props.isManager ? (
-        <div></div>
-      ) : (
+    <div>
+      {loading ? (
         <div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <hr id="home" className="border-hidden" />
+          <Loading />
+        </div>
+      ) : (
+        <div className="bg-white h-screen">
+          <Navbar isManager={props.isManager} />
 
-          <HomeComponent />
+          {props.isManager ? (
+            <div></div>
+          ) : (
+            <div>
+              <br />
+              <br />
+              <br />
+              <br />
+              <hr id="home" className="border-hidden" />
 
-          <br />
-          <hr id="withdraws" className="border-hidden" />
+              <HomeComponent />
 
-          <p>Withdraws</p>
+              <br />
+              <hr id="withdraws" className="border-hidden" />
 
-          <p>History</p>
-          <p>date: 21/7/22 0.2 Lev Coin equals to 2.1 ILS</p>
+              <p>Withdraws</p>
 
-          <br />
+              <p>History</p>
+              <p>date: 21/7/22 0.2 Lev Coin equals to 2.1 ILS</p>
 
-          <hr id="new_account" className="border-hidden" />
+              <br />
 
-          <p>New account</p>
+              <Withdraw />
 
-          <p>Create new account </p>
-          <p>Enter the required fields </p>
-          <p>transfer an initial amount to transfer to this new account </p>
-          <p> You want to transfer 2 lev coins </p>
+              <hr id="new_account" className="border-hidden" />
 
-          <br />
+              <p>New account</p>
 
-          <hr id="transactions" className="border-hidden" />
+              <p>Create new account </p>
+              <p>Enter the required fields </p>
+              <p>transfer an initial amount to transfer to this new account </p>
+              <p> You want to transfer 2 lev coins </p>
 
-          <p>Transactions</p>
+              <NewAccountForm />
 
-          <p>date 21/7/22 you received money 0.6 LevCoin</p>
+              <br />
 
-          <p>You transfer two lev coins to another account number 2223231</p>
+              <hr id="transactions" className="border-hidden" />
 
-          <br />
-          <hr id="transfer" className="border-hidden" />
+              <p>Transactions</p>
 
-          <p>Transfer</p>
-          <p>specify the amount to transfer</p>
-          <p>sure to transfer 2 lev coins</p>
+              <p>date 21/7/22 you received money 0.6 LevCoin</p>
 
-          <br />
-          <hr id="my_loans" className="border-hidden" />
+              <p>
+                You transfer two lev coins to another account number 2223231
+              </p>
 
-          <p>My loans</p>
-          <p>date 21/7/22 5 lev coins from bank until 21/7/22</p>
-          <p>interest of 0.05 in total means 0.002 per Month </p>
-          <p>You almost pay all the money</p>
+              <Transactions />
+              <br />
+              <hr id="transfer" className="border-hidden" />
+
+              <p>Transfer</p>
+              <p>specify the amount to transfer</p>
+              <p>sure to transfer 2 lev coins</p>
+
+              <Transfer />
+              <br />
+              <hr id="my_loans" className="border-hidden" />
+
+              <p>My loans</p>
+              <p>date 21/7/22 5 lev coins from bank until 21/7/22</p>
+              <p>interest of 0.05 in total means 0.002 per Month </p>
+              <p>You almost pay all the money</p>
+              <Loans />
+            </div>
+          )}
         </div>
       )}
     </div>

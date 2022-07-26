@@ -42,7 +42,7 @@ const HomeComponent = () => {
     },
   };
   return (
-    <div class="grid h-screen place-items-center">
+    <div>
       <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
         <div className="shrink-0"></div>
         <div>
@@ -52,6 +52,7 @@ const HomeComponent = () => {
           <p className="text-slate-500">{name}, You have a new updates!</p>
         </div>
       </div>
+      <br />
       <div>
         <Chart
           info={data}
