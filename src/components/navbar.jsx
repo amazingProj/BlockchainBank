@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
   const [nav, setNav] = useState(false);
@@ -24,13 +25,18 @@ const Navbar = (props) => {
                 <div className="flex items-center">
                   {props.isManager && (
                     <ul className="hidden md:flex text-xl">
-                      <li className="hover:bg-zinc-300 mt-2">Home</li>
-                      <li className="hover:bg-zinc-300 mt-2">Withdraws</li>
-                      <li className="hover:bg-zinc-300 mt-2">
+                      <li className="hover:bg-zinc-300 mt-2 mr-10">Home</li>
+                      <li className="hover:bg-zinc-300 mt-2 mr-10">
+                        Withdraws
+                      </li>
+                      <li className="hover:bg-zinc-300 mt-2 mr-10">
                         Manage Accounts
                       </li>
-                      <li className="hover:bg-zinc-300 mt-2">Users</li>
-                      <li className="hover:bg-zinc-300 mt-2" onClick={logout}>
+                      <li className="hover:bg-zinc-300 mt-2 mr-10">Users</li>
+                      <li
+                        className="hover:bg-zinc-300 mt-2 mr-10"
+                        onClick={logout}
+                      >
                         Logout
                       </li>
                     </ul>
@@ -78,8 +84,40 @@ const Navbar = (props) => {
             </div>
           </div>
         </div>
-        {props.isManager && <div></div>}
-        {!props.isManager && (
+        {props.isManager ? (
+          <ul
+            className={
+              !nav ? "hidden" : "absolute mt-20 bg-zinc-200 w-full px-8 mb-5"
+            }
+          >
+            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+              <a href="#home">Home</a>
+            </li>
+            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+              <a href="#withdraws">Withdraws</a>
+            </li>
+            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+              <a href="#new_account">New Account</a>
+            </li>
+            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+              <a href="#transactions">Transactions</a>
+            </li>
+            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+              <a href="#transfer">Transfer</a>
+            </li>
+
+            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+              <a href="#my_loans">My loans</a>
+            </li>
+
+            <li
+              className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full"
+              onClick={logout}
+            >
+              Logout
+            </li>
+          </ul>
+        ) : (
           <ul
             className={
               !nav ? "hidden" : "absolute mt-20 bg-zinc-200 w-full px-8 mb-5"
