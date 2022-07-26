@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import Axios from "axios";
 
-const Private = ({ component: Component, anotherComponent }) => {
+const Private = ({ component, anotherComponent, notFound }) => {
   var [isAuth, setIsAuth] = useState(true);
+  var [isPending, setIsPending] = useState(false);
   var [isAdminAuth, setIsAdminAuth] = useState(false);
   const location = useLocation();
 
@@ -17,18 +18,24 @@ const Private = ({ component: Component, anotherComponent }) => {
         withCredentials: true,
         url: "http://localhost:4000/users/login",
       }).then((res) => {
-        console.log(res.data);
-        if (res.data == "Successfully Authenticated") {
+        if (res.data == "Admin Authenticated") {
+          console.log(res.data);
+          setIsAuth(true);
+          setIsPending(false);
+          setIsAdminAuth(true);
+          console.log(isAuth);
         }
       });
     }
   }, [isAuth]);
 
   return isAuth ? (
-    isAdminAuth ? (
+    isPending ? (
+      notFound
+    ) : isAdminAuth ? (
       anotherComponent
     ) : (
-      Component
+      component
     )
   ) : (
     <Navigate to={location.pathname.replace("home", "login")} />

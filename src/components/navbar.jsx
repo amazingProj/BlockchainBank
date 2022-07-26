@@ -8,7 +8,7 @@ const Navbar = (props) => {
 
   const logout = () => {
     localStorage.setItem("authenticated", {});
-    window.location.replace("/home");
+    window.location.replace("/login");
   };
 
   return (

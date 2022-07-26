@@ -6,6 +6,7 @@ import PageNotFound from "./pages/not_found";
 import Terms from "./pages/terms";
 import HomeOne from "./pages/home_one";
 import HomeTwo from "./pages/home_two";
+import NotValidAccount from "./pages/notValidAccount";
 import fullScreen from "./assets/icons/fullscreen.png";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import exitFullScreen from "./assets/icons/exit-full-screen.png";
@@ -64,6 +65,7 @@ function App() {
                   <Private
                     component={<HomeOne />}
                     anotherComponent={<HomeTwo />}
+                    notFound={<NotValidAccount />}
                   />
                 }
               />
