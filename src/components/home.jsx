@@ -213,11 +213,11 @@ const HomeComponent = () => {
     },
   };
   return (
-    <div>
+    <div className="mb-60 mt-20">
       <div className="text-center text-5xl font-medium text-black mt-2 mb-4">
         😎😁🤑🤮LevCoin Bank👽👾🤖👻
       </div>
-      <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
+      <div className="mt-20 p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
         <div className="shrink-0"></div>
         <div>
           <div className="text-xl font-medium text-black">
@@ -238,7 +238,7 @@ const HomeComponent = () => {
           stockShortName="Balance."
         />
         <br />
-        <div>
+        <div className="mt-10 mb-20">
           <div className="text-center mt-4 mb-4">
             <div className="text-3xl">Monthly account analytics</div>
             <div className="text-xl">The most left is current date.</div>
@@ -247,7 +247,7 @@ const HomeComponent = () => {
           <Graph info={graphTwoData} />
         </div>
 
-        <div>
+        <div className="mt-5 mb-5">
           <div className="text-center mt-4 mb-4">
             <div className="text-3xl">Annually account analytics</div>
             <div className="text-xl">The most left is current month.</div>

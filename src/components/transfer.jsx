@@ -2,8 +2,7 @@ import React from "react";
 
 const Transfer = () => {
   return (
-    <div>
-      {" "}
+    <div className="flex items-center justify-center">
       <form className="w-full max-w-lg">
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
