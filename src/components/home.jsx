@@ -217,7 +217,7 @@ const HomeComponent = () => {
       <div className="text-center text-5xl font-medium text-black mt-2 mb-4">
         😎😁🤑🤮LevCoin Bank👽👾🤖👻
       </div>
-      <div className="mt-20 p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
+      <div className="mt-60 p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
         <div className="shrink-0"></div>
         <div>
           <div className="text-xl font-medium text-black">

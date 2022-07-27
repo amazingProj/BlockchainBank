@@ -54,8 +54,8 @@ const Transfer = () => {
             <p className="text-gray-600 text-xs italic">Your password</p>
           </div>
         </div>
-        <div className="flex flex-wrap -mx-3 mb-2">
-          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <div className="-mx-3 mb-2">
+          <div className="w-full md:w-3/4 px-3 mb-10 md:mb-0">
             <label
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="grid-city"
@@ -66,16 +66,16 @@ const Transfer = () => {
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-city"
               type="text"
-              placeholder="Albuquerque"
+              placeholder="32489432y48382gbdhvgdshgvehjt732"
             />
           </div>
 
-          <div className="w-full md:w-2/4 px-3 mb-6 md:mb-0">
+          <div className="w-full md:w-1/3 px-3 mb-6 mt-6 md:mb-0">
             <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              className="mt-6 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="grid-zip"
             >
-              Amount of money transferred
+              Amount
             </label>
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
