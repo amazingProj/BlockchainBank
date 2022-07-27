@@ -2,7 +2,7 @@ import React from "react";
 
 const Loans = () => {
   return (
-    <div>
+    <div className="mt-10">
       <div>
         {" "}
         <div>

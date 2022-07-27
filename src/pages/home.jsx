@@ -64,7 +64,7 @@ const Home = (props) => {
 
               <hr id="transactions" className="border-hidden" />
 
-              <div className="text-center text-5xl mt-10 mb-10">
+              <div className="text-center text-5xl mt-20 mb-10">
                 Transactions
               </div>
 
@@ -79,7 +79,7 @@ const Home = (props) => {
               <hr id="transfer" className="border-hidden" />
 
               <div>
-                <div className="text-center text-5xl mt-10 mb-10">
+                <div className="text-center text-5xl mt-20 mb-10">
                   Transfer money
                 </div>{" "}
                 <Transfer />
@@ -91,7 +91,7 @@ const Home = (props) => {
               <br />
               <hr id="my_loans" className="border-hidden" />
 
-              <div className="text-center text-5xl mt-10 mb-10">My loans</div>
+              <div className="text-center text-5xl mt-20 mb-10">My loans</div>
 
               <Loans />
 

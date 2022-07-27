@@ -1,4 +1,5 @@
 import React from "react";
+import BirthdayPicker from "./birthdayPicker";
 
 const NewAccountForm = () => {
   return (
@@ -14,10 +15,29 @@ const NewAccountForm = () => {
           <div className="md:col-span-1">
             <div className="px-4 sm:px-0">
               <h3 className="text-lg font-medium leading-6 text-gray-900">
-                Personal Information
+                Personal New Account Information
               </h3>
               <p className="mt-1 text-sm text-gray-600">
-                Use a permanent address where you can receive mail.
+                Fill all required details about the new account.
+                {"\n"}
+                The request will be sent to the manager for his approval.
+              </p>
+              <p className="mt-1 text-sm text-gray-600">
+                Fill first name and last name of the account owner.
+                {"\n"}
+                Fill owner's email and birthday
+              </p>
+              <p className="mt-1 text-sm text-gray-600">
+                Use a permanent email address where you can receive mail.
+                {"\n"}
+              </p>
+              <p className="mt-1 text-sm text-gray-600">
+                Describe your request for the manager.
+                {"\n"}
+              </p>
+              <p className="mt-1 text-sm text-gray-600">
+                Finally choose username and password of the new user account.
+                {"\n"}
               </p>
             </div>
           </div>
@@ -79,18 +99,9 @@ const NewAccountForm = () => {
                         htmlFor="country"
                         className="block text-sm font-medium text-gray-700"
                       >
-                        Country
+                        Birthday
                       </label>
-                      <select
-                        id="country"
-                        name="country"
-                        autoComplete="country-name"
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      >
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>Mexico</option>
-                      </select>
+                      <BirthdayPicker />
                     </div>
 
                     <div className="col-span-6">
@@ -98,7 +109,7 @@ const NewAccountForm = () => {
                         htmlFor="street-address"
                         className="block text-sm font-medium text-gray-700"
                       >
-                        Street address
+                        Few words about the request
                       </label>
                       <input
                         type="text"
@@ -114,7 +125,7 @@ const NewAccountForm = () => {
                         htmlFor="city"
                         className="block text-sm font-medium text-gray-700"
                       >
-                        City
+                        New Username
                       </label>
                       <input
                         type="text"
@@ -130,10 +141,10 @@ const NewAccountForm = () => {
                         htmlFor="region"
                         className="block text-sm font-medium text-gray-700"
                       >
-                        State / Province
+                        New Password
                       </label>
                       <input
-                        type="text"
+                        type="password"
                         name="region"
                         id="region"
                         autoComplete="address-level1"
@@ -146,10 +157,10 @@ const NewAccountForm = () => {
                         htmlFor="postal-code"
                         className="block text-sm font-medium text-gray-700"
                       >
-                        ZIP / Postal code
+                        Confirm New Password
                       </label>
                       <input
-                        type="text"
+                        type="password"
                         name="postal-code"
                         id="postal-code"
                         autoComplete="postal-code"
@@ -163,7 +174,7 @@ const NewAccountForm = () => {
                     type="submit"
                     className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
-                    Save
+                    Request a new account
                   </button>
                 </div>
               </div>
