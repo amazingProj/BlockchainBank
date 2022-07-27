@@ -39,13 +39,6 @@ const Home = (props) => {
 
               <hr id="withdraws" className="border-hidden" />
 
-              <p>Withdraws</p>
-
-              <p>History</p>
-              <p>date: 21/7/22 0.2 Lev Coin equals to 2.1 ILS</p>
-
-              <br />
-
               <Withdraw />
 
               <hr id="new_account" className="border-hidden" />
@@ -70,12 +63,6 @@ const Home = (props) => {
 
               <Transactions />
 
-              <p>date 21/7/22 you received money 0.6 LevCoin</p>
-
-              <p>
-                You transfer two lev coins to another account number 2223231
-              </p>
-              <br />
               <hr id="transfer" className="border-hidden" />
 
               <div>
@@ -85,19 +72,11 @@ const Home = (props) => {
                 <Transfer />
               </div>
 
-              <p>specify the amount to transfer</p>
-              <p>sure to transfer 2 lev coins</p>
-
-              <br />
               <hr id="my_loans" className="border-hidden" />
 
               <div className="text-center text-5xl mt-20 mb-10">My loans</div>
 
               <Loans />
-
-              <p>date 21/7/22 5 lev coins from bank until 21/7/22</p>
-              <p>interest of 0.05 in total means 0.002 per Month </p>
-              <p>You almost pay all the money</p>
             </div>
           )}
         </div>

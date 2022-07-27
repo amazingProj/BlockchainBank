@@ -213,17 +213,16 @@ const HomeComponent = () => {
     },
   };
   return (
-    <div className="mb-60 mt-20">
-      <div className="text-center text-5xl font-medium text-black mt-2 mb-4">
-        😎😁🤑🤮LevCoin Bank👽👾🤖👻
-      </div>
-      <div className="mt-60 p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
+    <div className="mb-20 mt-20">
+      <div className="mt-20 p-6 max-w-2xl mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
         <div className="shrink-0"></div>
         <div>
-          <div className="text-xl font-medium text-black">
+          <div className="text-5xl font-medium text-black">
             Welcome to LevCoin Bank
           </div>
-          <p className="text-slate-500">{name}, You have a new updates!</p>
+          <p className="text-slate-500 text-2xl">
+            {name}, You have a new updates!
+          </p>
         </div>
       </div>
       <br />
