@@ -1,7 +1,19 @@
 import React from "react";
 import Money from "./assets/icons/money.jpg";
+import Money2 from "./assets/icons/money2.jpg";
+import Money3 from "./assets/icons/money3.jpg";
 const Withdraw = () => {
-  const widthdrawsList = [{}];
+  const withdrawsList = [
+    { date: "01/07/2022", sentEmail: "asafdav@g.jct.ac.l", money: "2$" },
+    { date: "01/06/2022", sentEmail: "safdav@g.jct.ac.l", money: "3$" },
+    { date: "01/05/2022", sentEmail: "aafdav@g.jct.ac.l", money: "1$" },
+    { date: "01/04/2022", sentEmail: "asfdav@g.jct.ac.l", money: "1$" },
+    { date: "01/03/2022", sentEmail: "afdav@g.jct.ac.l", money: "2$" },
+    { date: "11/02/2022", sentEmail: "dav@g.jct.ac.l", money: "1$" },
+    { date: "10/02/2022", sentEmail: "asafv@jct.ac.l", money: "2.1$" },
+    { date: "09/02/2022", sentEmail: "asav@g.jct.ac.l", money: "1$" },
+    { date: "08/02/2022", sentEmail: "asv@l.c", money: "1.2$" },
+  ];
   return (
     <div className="mt-10">
       <div className="text-5xl text-center mt-10 mb-2">Withdraws history</div>
@@ -26,116 +38,30 @@ const Withdraw = () => {
               role="list"
               className="divide-y divide-gray-200 dark:divide-gray-700"
             >
-              <li className="py-3 sm:py-4">
-                <div className="flex items-center space-x-4">
-                  <div className="flex-shrink-0">
-                    <img
-                      className="w-8 h-8 rounded-full"
-                      src={Money}
-                      alt="money image"
-                    />
+              {withdrawsList.map((withdraw) => (
+                <li className="py-3 sm:py-4">
+                  <div className="flex items-center space-x-4">
+                    <div className="flex-shrink-0">
+                      <img
+                        className="w-8 h-8 rounded-full"
+                        src={Math.floor(Math.random() * 3) + 1 == 1 ? Money : Math.floor(Math.random() * 3) + 1 == 2 ? Money2 : Money3}
+                        alt="money image"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        {withdraw.date}
+                      </p>
+                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                        {withdraw.sentEmail}
+                      </p>
+                    </div>
+                    <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                      {withdraw.money}
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                      22/4/2022
-                    </p>
-                    <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                      email@windster.com
-                    </p>
-                  </div>
-                  <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                    $3 | 1.25 LevCoin
-                  </div>
-                </div>
-              </li>
-              <li className="py-3 sm:py-4">
-                <div className="flex items-center space-x-4">
-                  <div className="flex-shrink-0">
-                    <img
-                      className="w-8 h-8 rounded-full"
-                      src="/docs/images/people/profile-picture-3.jpg"
-                      alt="Bonnie image"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                      Bonnie Green
-                    </p>
-                    <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                      email@windster.com
-                    </p>
-                  </div>
-                  <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                    $3467
-                  </div>
-                </div>
-              </li>
-              <li className="py-3 sm:py-4">
-                <div className="flex items-center space-x-4">
-                  <div className="flex-shrink-0">
-                    <img
-                      className="w-8 h-8 rounded-full"
-                      src="/docs/images/people/profile-picture-2.jpg"
-                      alt="Michael image"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                      Michael Gough
-                    </p>
-                    <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                      email@windster.com
-                    </p>
-                  </div>
-                  <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                    $67
-                  </div>
-                </div>
-              </li>
-              <li className="py-3 sm:py-4">
-                <div className="flex items-center space-x-4">
-                  <div className="flex-shrink-0">
-                    <img
-                      className="w-8 h-8 rounded-full"
-                      src="/docs/images/people/profile-picture-4.jpg"
-                      alt="Lana image"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                      Lana Byrd
-                    </p>
-                    <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                      email@windster.com
-                    </p>
-                  </div>
-                  <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                    $367
-                  </div>
-                </div>
-              </li>
-              <li className="pt-3 pb-0 sm:pt-4">
-                <div className="flex items-center space-x-4">
-                  <div className="flex-shrink-0">
-                    <img
-                      className="w-8 h-8 rounded-full"
-                      src="/docs/images/people/profile-picture-5.jpg"
-                      alt="Thomas image"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                      Thomes Lean
-                    </p>
-                    <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                      email@windster.com
-                    </p>
-                  </div>
-                  <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                    $2367
-                  </div>
-                </div>
-              </li>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
