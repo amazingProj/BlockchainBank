@@ -1,5 +1,5 @@
 import React from "react";
-
+import Money from "./assets/icons/money.jpg";
 const Withdraw = () => {
   const widthdrawsList = [{}];
   return (
@@ -31,8 +31,8 @@ const Withdraw = () => {
                   <div className="flex-shrink-0">
                     <img
                       className="w-8 h-8 rounded-full"
-                      src="/docs/images/people/profile-picture-1.jpg"
-                      alt="Neil image"
+                      src={Money}
+                      alt="money image"
                     />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -44,7 +44,7 @@ const Withdraw = () => {
                     </p>
                   </div>
                   <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                    $320
+                    $3 | 1.25 LevCoin
                   </div>
                 </div>
               </li>
