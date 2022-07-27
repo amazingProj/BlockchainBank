@@ -92,6 +92,7 @@ const HomeComponent = () => {
 
   console.log(getAllPrevWeek());
 
+  const currentBalance = 2.23;
   const data = {
     stockFullName: "SW Limited.",
     stockShortName: "ASX:SFW",
@@ -108,8 +109,19 @@ const HomeComponent = () => {
     chartData: {
       labels: getAllPrevWeek(),
       data: [
-        2.23, 2.215, 2.22, 2.25, 2.245, 2.27, 2.28, 2.29, 2.3, 2.29, 2.325,
-        2.325, 2.32,
+        currentBalance,
+        2.215,
+        2.22,
+        2.25,
+        2.245,
+        2.27,
+        2.28,
+        2.29,
+        2.3,
+        2.29,
+        2.325,
+        2.325,
+        2.32,
       ],
     },
   };
@@ -130,8 +142,40 @@ const HomeComponent = () => {
     chartData: {
       labels: getAllPrevMonth(),
       data: [
-        2.23, 2.215, 2.22, 2.25, 2.245, 2.27, 2.28, 2.29, 2.3, 2.29, 2.325,
-        2.325, 2.32,
+        currentBalance,
+        2.215,
+        2.22,
+        2.25,
+        2.245,
+        2.27,
+        2.28,
+        2.29,
+        2.3,
+        2.29,
+        2.325,
+        2.325,
+        2.32,
+        3.1,
+        4.1,
+        1.1,
+        2.2,
+        2.3,
+        2.4,
+        2.2,
+        2.3,
+        2.4,
+        3.1,
+        4.1,
+        1.1,
+        2.2,
+        2.245,
+        2.27,
+        2.28,
+        2.29,
+        2.3,
+        2.29,
+        2.325,
+        2.325,
       ],
     },
   };
@@ -152,8 +196,19 @@ const HomeComponent = () => {
     chartData: {
       labels: getAllPastYearForGraph(),
       data: [
-        2.23, 2.215, 2.22, 2.25, 2.245, 2.27, 2.28, 2.29, 2.3, 2.29, 2.325,
-        2.325, 2.32,
+        currentBalance,
+        2.215,
+        2.22,
+        2.25,
+        2.245,
+        2.27,
+        2.28,
+        2.29,
+        2.3,
+        2.29,
+        2.325,
+        2.325,
+        2.32,
       ],
     },
   };
@@ -194,7 +249,7 @@ const HomeComponent = () => {
 
         <div>
           <div className="text-center mt-4 mb-4">
-            <div className="text-3xl">Annual account analytics</div>
+            <div className="text-3xl">Annually account analytics</div>
             <div className="text-xl">The most left is current month.</div>
           </div>
 
