@@ -7,6 +7,9 @@ import NewAccountForm from "../components/new_account_form";
 import Transactions from "../components/transactions";
 import Transfer from "../components/transfer";
 import Loans from "../components/loans";
+import Admin from "../components/admin";
+import Table from "../components/table";
+import UsersTable from "../components/usersTable";
 
 const Home = (props) => {
   const [loading, setLoading] = useState(true);
@@ -26,7 +29,34 @@ const Home = (props) => {
           <Navbar isManager={props.isManager} />
 
           {props.isManager ? (
-            <div></div>
+            <div>
+              <hr id="home" className="border-hidden" />
+              <br />
+              <br />
+              <br />
+              <br />
+
+              <Admin />
+
+              <hr id="accounts" className="border-hidden" />
+
+              <div className="mb-20 text-center">
+                <div className="text-5xl mb-3"> Manage Accounts</div>
+                <div className="text-xl">
+                  Approve users to start having an account, waiting list
+                </div>
+              </div>
+
+              <UsersTable />
+
+              <hr id="users" className="border-hidden" />
+              <div className="mb-20 mt-20 text-center">
+                <div className="text-5xl mb-3"> All users</div>
+                <div className="text-xl">Explore all system's user</div>
+              </div>
+
+              <Table />
+            </div>
           ) : (
             <div>
               <br />

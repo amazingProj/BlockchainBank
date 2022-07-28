@@ -25,19 +25,21 @@ const Navbar = (props) => {
                 <div className="flex items-center">
                   {props.isManager && (
                     <ul className="hidden md:flex text-xl">
-                      <li className="hover:bg-zinc-300 mt-2 mr-10">Home</li>
                       <li className="hover:bg-zinc-300 mt-2 mr-10">
-                        Withdraws
+                        <a href="#home">Home</a>
+                      </li>
+
+                      <li className="hover:bg-zinc-300 mt-2 mr-10">
+                        <a href="#accounts">Manage Accounts</a>
                       </li>
                       <li className="hover:bg-zinc-300 mt-2 mr-10">
-                        Manage Accounts
+                        <a href="#users">All Users</a>
                       </li>
-                      <li className="hover:bg-zinc-300 mt-2 mr-10">Users</li>
                       <li
                         className="hover:bg-zinc-300 mt-2 mr-10"
                         onClick={logout}
                       >
-                        Logout
+                        <a href="/login">Logout</a>
                       </li>
                     </ul>
                   )}
@@ -94,22 +96,11 @@ const Navbar = (props) => {
               <a href="#home">Home</a>
             </li>
             <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#withdraws">Withdraws</a>
+              <a href="#accounts">Manage Accounts</a>
             </li>
             <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#new_account">New Account</a>
+              <a href="#users">All Users</a>
             </li>
-            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#transactions">Transactions</a>
-            </li>
-            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#transfer">Transfer</a>
-            </li>
-
-            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#my_loans">My loans</a>
-            </li>
-
             <li
               className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full"
               onClick={logout}
