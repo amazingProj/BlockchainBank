@@ -59,16 +59,7 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="sign_in" element={<Register full={true} />} />
               <Route path="terms" element={<Terms />} />
-              <Route
-                path="home"
-                element={
-                  <Private
-                    component={<HomeOne />}
-                    anotherComponent={<HomeTwo />}
-                    notFound={<NotValidAccount />}
-                  />
-                }
-              />
+              <Route path="home" element={<Private />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </div>

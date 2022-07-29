@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import Axios from "axios";
+import Loading from "../../components/loading";
+import NotValidAccount from "../../pages/notValidAccount";
+import HomeOne from "../../pages/home_one";
+import HomeTwo from "../../pages/home_two";
 
-const Private = ({ component, anotherComponent, notFound }) => {
-  var [isAuth, setIsAuth] = useState(true);
+const Private = () => {
+  var [isAuth, setIsAuth] = useState(false);
   var [isPending, setIsPending] = useState(false);
-  var [isAdminAuth, setIsAdminAuth] = useState(true);
+  var [isAdminAuth, setIsAdminAuth] = useState(false);
   const location = useLocation();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 10000);
+    console.log(isAuth);
+  }, []);
 
   useEffect(() => {
     console.log(isAuth);
@@ -22,24 +32,36 @@ const Private = ({ component, anotherComponent, notFound }) => {
         withCredentials: true,
         url: "http://localhost:4000/users/login",
       }).then((res) => {
-        if (res.data == "Admin Authenticated") {
+        if (res.data == "Successfully authenticated") {
           console.log(res.data);
           setIsAuth(true);
+          setIsAdminAuth(false);
           setIsPending(false);
+          console.log(isAdminAuth);
+        } else if (res.data == "Admin authenticated") {
+          setIsAuth(true);
           setIsAdminAuth(true);
-          console.log(isAuth);
+          setIsPending(false);
+        } else {
+          setIsAuth(true);
+          setIsAdminAuth(false);
+          setIsPending(true);
         }
       });
     }
   }, [isAuth]);
 
-  return isAuth ? (
+  return loading ? (
+    <div>
+      <Loading />
+    </div>
+  ) : isAuth ? (
     isPending ? (
-      notFound
+      <NotValidAccount />
     ) : isAdminAuth ? (
-      anotherComponent
+      <HomeTwo />
     ) : (
-      component
+      <HomeOne />
     )
   ) : (
     <Navigate to={location.pathname.replace("home", "login")} />
