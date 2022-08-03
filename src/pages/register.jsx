@@ -2,6 +2,9 @@ import React from "react";
 import { useEffect, useRef, useState } from "react";
 import arrowBack from "../components/assets/icons/back-arrow-icon.png";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import BirthdayPicker from "../components/birthdayPicker";
 
 const Register = (props) => {
   const firstName = useRef();
@@ -9,13 +12,63 @@ const Register = (props) => {
   const email = useRef();
   const password = useRef();
   const confirmedPassword = useRef();
-  const [terms, setTerms] = useState();
+  const [terms, setTerms] = useState(false);
+  const [values, setValues] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
+
+  const handleChange = (event) => {
+    setValues({ ...values, [event.target.name]: event.target.value });
+  };
+
+  const handleValidation = () => {
+    const { password, confirmPassword, username, email } = values;
+    if (password !== confirmPassword) {
+      toast.error(
+        "Password and confirm password should be same.",
+        toastOptions
+      );
+      return false;
+    } else if (username.length < 3) {
+      toast.error(
+        "Username should be greater than 3 characters.",
+        toastOptions
+      );
+      return false;
+    } else if (password.length < 8) {
+      toast.error(
+        "Password should be equal or greater than 8 characters.",
+        toastOptions
+      );
+      return false;
+    } else if (email === "") {
+      toast.error("Email is required.", toastOptions);
+      return false;
+    } else if (!terms) {
+      toast.error("You must agree to our terms.", toastOptions);
+      return false;
+    }
+
+    return true;
+  };
 
   const termsClicked = () => {
     setTerms(!terms);
   };
 
   const createAccount = () => {
+    if (!handleValidation()) return;
     let passwordVAR = password.current.value;
     console.log(passwordVAR);
     if (passwordVAR == confirmedPassword.current.value && terms) {
@@ -43,10 +96,16 @@ const Register = (props) => {
       <section className="h-screen">
         <div className="px-6 h-full text-gray-800 ">
           <div className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
-            <form>
+            <form className="p-10 bg-white rounded-xl drop-shadow-lg space-y-5">
               <div className="mb-8 text-7xl">Create a new account</div>
               <div className="mb-6 text-3xl">LevCoin Bank</div>
               <div className="mb-6">
+                <label
+                  htmlFor="country"
+                  className="mb-2 block text-sm font-medium text-gray-700"
+                >
+                  Owner' first name and last name
+                </label>
                 <input
                   ref={firstName}
                   type="text"
@@ -63,24 +122,58 @@ const Register = (props) => {
                   placeholder="Last Name"
                 />
               </div>
+              {/* Username input */}
+              <div className="mb-6">
+                <label className="mb-1 block text-sm font-medium text-gray-700">
+                  Enter a username
+                </label>
+                <input
+                  type="text"
+                  className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  placeholder="Username"
+                  name="username"
+                  onChange={(e) => handleChange(e)}
+                />
+              </div>
+
+              <div className="col-span-6 sm:col-span-3">
+                <label
+                  htmlFor="country"
+                  className="mb-1 block text-sm font-medium text-gray-700"
+                >
+                  Enter birthday
+                </label>
+                <BirthdayPicker />
+              </div>
+
               {/* Email input */}
               <div className="mb-6">
+                <label className="mb-1 block text-sm font-medium text-gray-700">
+                  Valid email
+                </label>
                 <input
                   ref={email}
                   type="text"
+                  name="email"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   id="exampleFormControlInput2"
                   placeholder="Email address"
+                  onChange={(e) => handleChange(e)}
                 />
               </div>
               {/* Password input */}
               <div className="mb-6">
+                <label className="mb-2 block text-sm font-medium text-gray-700">
+                  Enter password
+                </label>
                 <input
                   ref={password}
                   type="password"
+                  name="password"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   id="exampleFormControlInput2"
                   placeholder="Password"
+                  onChange={(e) => handleChange(e)}
                 />
               </div>
 
@@ -88,13 +181,14 @@ const Register = (props) => {
                 <input
                   ref={confirmedPassword}
                   type="password"
+                  name="confirmPassword"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   id="exampleFormControlInput2"
                   placeholder="Confirm Password"
+                  onChange={(e) => handleChange(e)}
                 />
               </div>
 
-              
               <div class="mb-6 flex items-center">
                 <input
                   id="link-checkbox"
@@ -130,6 +224,7 @@ const Register = (props) => {
           </div>
         </div>
       </section>
+      <ToastContainer />
     </div>
   );
 };
