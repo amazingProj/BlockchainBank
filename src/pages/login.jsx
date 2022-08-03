@@ -16,16 +16,24 @@ const Login = () => {
       url: "http://localhost:4000/users/login",
     }).then((res) => {
       console.log(res);
-      if (
-        res.data == "Basic user authenticated" ||
-        res.data == "Manager authenticated"
-      ) {
+      if (res.data == "Basic user authenticated") {
         console.log("data successfully");
         localStorage.setItem(
           "authenticated",
           JSON.stringify({
             username: loginUsername,
             password: loginPassword,
+            role: "User",
+          })
+        );
+        window.location.replace("/home");
+      } else if (res.data == "Manager authenticated") {
+        localStorage.setItem(
+          "authenticated",
+          JSON.stringify({
+            username: loginUsername,
+            password: loginPassword,
+            role: "Admin",
           })
         );
         window.location.replace("/home");

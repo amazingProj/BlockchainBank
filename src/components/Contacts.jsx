@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Logo from "./assets/icons/logo.svg";
+import Profile from "./assets/icons/profile.jpg";
 
 export default function Contacts({ contacts, changeChat }) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
@@ -13,11 +14,11 @@ export default function Contacts({ contacts, changeChat }) {
   };
   return (
     <>
-      {currentUserImage && currentUserImage && (
+      {
         <Container>
           <div className="brand">
             <img src={Logo} alt="logo" />
-            <h3>snappy</h3>
+            <h3>Chat</h3>
           </div>
           <div className="contacts">
             {contacts.map((contact, index) => {
@@ -30,10 +31,7 @@ export default function Contacts({ contacts, changeChat }) {
                   onClick={() => changeCurrentChat(index, contact)}
                 >
                   <div className="avatar">
-                    <img
-                      src={`data:image/svg+xml;base64,${contact.avatarImage}`}
-                      alt=""
-                    />
+                    <img src={Profile} alt="" />
                   </div>
                   <div className="username">
                     <h3>{contact.username}</h3>
@@ -44,17 +42,14 @@ export default function Contacts({ contacts, changeChat }) {
           </div>
           <div className="current-user">
             <div className="avatar">
-              <img
-                src={`data:image/svg+xml;base64,${currentUserImage}`}
-                alt="avatar"
-              />
+              <img src={Profile} alt="avatar" />
             </div>
             <div className="username">
               <h2>{currentUserName}</h2>
             </div>
           </div>
         </Container>
-      )}
+      }
     </>
   );
 }

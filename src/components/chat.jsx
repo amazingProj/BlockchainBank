@@ -14,6 +14,17 @@ export default function Chat() {
   const [contacts, setContacts] = useState([]);
   const [currentChat, setCurrentChat] = useState(undefined);
   const [currentUser, setCurrentUser] = useState(undefined);
+
+  const contactsList = [
+    { _id: "dfkdshdsfh", username: "Asaf H" },
+    { _id: "dfkdshgfdsfh", username: "Ariel S" },
+    { _id: "dhdsfh", username: "El Kof" },
+  ];
+
+  useEffect(() => {
+    setContacts(contactsList);
+  }, [contacts]);
+
   useEffect(() => {
     if (currentUser) {
       socket.current = io(host);

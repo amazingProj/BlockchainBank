@@ -14,7 +14,7 @@ const Private = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 5000);
+    setTimeout(() => setLoading(false), 2000);
     console.log(isAuth);
   }, []);
 
