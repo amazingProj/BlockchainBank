@@ -7,6 +7,7 @@ import NewAccountForm from "../components/new_account_form";
 import Transactions from "../components/transactions";
 import Transfer from "../components/transfer";
 import Loans from "../components/loans";
+import Chat from "../components/chat";
 import Admin from "../components/admin";
 import Table from "../components/table";
 import UsersTable from "../components/usersTable";
@@ -56,6 +57,11 @@ const Home = (props) => {
               </div>
 
               <Table />
+
+              <br />
+              <br />
+              <br />
+              <Chat />
             </div>
           ) : (
             <div>

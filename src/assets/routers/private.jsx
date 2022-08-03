@@ -35,7 +35,7 @@ const Private = () => {
         if (res.data == "Successfully authenticated") {
           console.log(res.data);
           setIsAuth(true);
-          setIsAdminAuth(false);
+          setIsAdminAuth(true);
           setIsPending(false);
           console.log(isAdminAuth);
         } else if (res.data == "Admin authenticated") {
