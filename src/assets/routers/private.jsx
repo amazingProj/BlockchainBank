@@ -32,13 +32,13 @@ const Private = () => {
         withCredentials: true,
         url: "http://localhost:4000/users/login",
       }).then((res) => {
-        if (res.data == "Successfully authenticated") {
+        if (res.data == "Basic user authenticated") {
           console.log(res.data);
           setIsAuth(true);
-          setIsAdminAuth(true);
+          setIsAdminAuth(false);
           setIsPending(false);
           console.log(isAdminAuth);
-        } else if (res.data == "Admin authenticated") {
+        } else if (res.data == "Manager authenticated") {
           setIsAuth(true);
           setIsAdminAuth(true);
           setIsPending(false);

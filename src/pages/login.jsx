@@ -16,7 +16,10 @@ const Login = () => {
       url: "http://localhost:4000/users/login",
     }).then((res) => {
       console.log(res);
-      if (res.data == "Successfully authenticated") {
+      if (
+        res.data == "Basic user authenticated" ||
+        res.data == "Manager authenticated"
+      ) {
         console.log("data successfully");
         localStorage.setItem(
           "authenticated",

@@ -28,7 +28,6 @@ export default function Chat() {
     <Container>
       <div className="container">
         <Contacts contacts={contacts} changeChat={handleChatChange} />
-        {console.log(currentChat)}
         {currentChat === undefined ? (
           <Welcome />
         ) : (
