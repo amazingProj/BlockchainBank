@@ -35,6 +35,9 @@ const Navbar = (props) => {
                       <li className="hover:bg-zinc-300 mt-2 mr-10">
                         <a href="#users">All Users</a>
                       </li>
+                      <li className="hover:bg-zinc-300 mt-2 mr-10">
+                        <a href="#chat">Chat</a>
+                      </li>
                       <li
                         className="hover:bg-zinc-300 mt-2 mr-10"
                         onClick={logout}

@@ -61,6 +61,8 @@ const Home = (props) => {
               <br />
               <br />
               <br />
+              <hr id="chat" className="border-hidden" />
+
               <Chat />
             </div>
           ) : (

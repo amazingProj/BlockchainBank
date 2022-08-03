@@ -3,15 +3,15 @@ import styled from "styled-components";
 import Robot from "./assets/icons/robot.gif";
 export default function Welcome() {
   const [userName, setUserName] = useState("");
-  
+
   return (
-    <div>
+    <Container>
       <img src={Robot} alt="" />
       <h1>
         Welcome, <span>{userName}!</span>
       </h1>
       <h3>Please select a chat to Start messaging.</h3>
-    </div>
+    </Container>
   );
 }
 
