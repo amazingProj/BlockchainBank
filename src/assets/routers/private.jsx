@@ -25,6 +25,8 @@ const Private = () => {
   useEffect(() => {
     if (!isAuth) {
       const loggedInUser = localStorage.getItem("authenticated");
+      if (loggedInUser == {}) return;
+
       let json = JSON.parse(loggedInUser);
       Axios({
         method: "POST",

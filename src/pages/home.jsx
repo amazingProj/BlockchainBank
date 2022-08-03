@@ -63,7 +63,14 @@ const Home = (props) => {
               <br />
               <hr id="chat" className="border-hidden" />
 
-              <Chat />
+              <div className="mb-20 mt-20 text-center">
+                <div className="text-5xl mb-3">Chat</div>
+                <div className="text-xl">Answer users on chat</div>
+              </div>
+
+              <Chat user={false} />
+              <br />
+              <br />
             </div>
           ) : (
             <div>
@@ -82,7 +89,9 @@ const Home = (props) => {
               <hr id="new_account" className="border-hidden" />
 
               <div className="mt-20 mb-10">
-                <div className="text-center text-5xl mb-5">New account</div>
+                <div className="text-center text-5xl mb-5">
+                  New account request
+                </div>
 
                 <div className="text-center text-xl">
                   <div>Create a new account</div>
@@ -115,6 +124,19 @@ const Home = (props) => {
               <div className="text-center text-5xl mt-20 mb-10">My loans</div>
 
               <Loans />
+              <br />
+              <br />
+              <br />
+              <hr id="chat" className="border-hidden" />
+
+              <div className="mb-20 mt-20 text-center">
+                <div className="text-5xl mb-3">Chat</div>
+                <div className="text-xl">Have Chat with manager</div>
+              </div>
+
+              <Chat user={true} />
+              <br />
+              <br />
             </div>
           )}
         </div>

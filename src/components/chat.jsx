@@ -8,7 +8,7 @@ import ChatContainer from "./ChatContainer";
 import Contacts from "./Contacts";
 import Welcome from "./Welcome";
 
-export default function Chat() {
+export default function Chat(props) {
   const navigate = useNavigate();
   const socket = useRef();
   const [contacts, setContacts] = useState([]);
@@ -19,6 +19,11 @@ export default function Chat() {
     { _id: "dfkdshdsfh", username: "Asaf H" },
     { _id: "dfkdshgfdsfh", username: "Ariel S" },
     { _id: "dhdsfh", username: "El Kof" },
+  ];
+
+  const managerList = [
+    { _id: "dfkhdsfh", username: "Asaf" },
+    { _id: "dshgfdsfh", username: "Ariel" },
   ];
 
   useEffect(() => {
@@ -38,7 +43,10 @@ export default function Chat() {
   return (
     <Container>
       <div className="container">
-        <Contacts contacts={contacts} changeChat={handleChatChange} />
+        <Contacts
+          contacts={props.user ? managerList : contacts}
+          changeChat={handleChatChange}
+        />
         {currentChat === undefined ? (
           <Welcome />
         ) : (

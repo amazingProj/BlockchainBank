@@ -12,6 +12,13 @@ export default function Contacts({ contacts, changeChat }) {
     setCurrentSelected(index);
     changeChat(contact);
   };
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("authenticated");
+    let json = JSON.parse(loggedInUser);
+    setCurrentUserName(json.role);
+  }, [currentUserName]);
+
   return (
     <>
       {

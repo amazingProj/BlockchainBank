@@ -68,6 +68,10 @@ const Navbar = (props) => {
                       <li className="hover:bg-zinc-300 mt-2 mr-10">
                         <a href="#my_loans">My loans</a>
                       </li>
+
+                      <li className="hover:bg-zinc-300 mt-2 mr-10">
+                        <a href="#chat">Chat</a>
+                      </li>
                       <li
                         className="hover:bg-zinc-300 mt-2 mr-10"
                         onClick={logout}
@@ -104,6 +108,11 @@ const Navbar = (props) => {
             <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
               <a href="#users">All Users</a>
             </li>
+
+            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+              <a href="#chat">Chat</a>
+            </li>
+
             <li
               className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full"
               onClick={logout}
@@ -135,6 +144,10 @@ const Navbar = (props) => {
 
             <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
               <a href="#my_loans">My loans</a>
+            </li>
+
+            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+              <a href="#chat">Chat</a>
             </li>
 
             <li
