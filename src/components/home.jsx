@@ -217,12 +217,10 @@ const HomeComponent = () => {
       <div className="mt-20 p-6 max-w-2xl mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
         <div className="shrink-0"></div>
         <div>
-          <div className="text-5xl font-medium text-black">
-            Welcome to LevCoin Bank
+          <div className="text-3xl font-medium text-black">
+            Welcome to LevCoin Bank {name}
           </div>
-          <p className="text-slate-500 text-2xl">
-            {name}, You have a new updates!
-          </p>
+          
         </div>
       </div>
       <br />
