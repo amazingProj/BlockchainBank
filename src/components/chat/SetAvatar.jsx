@@ -6,7 +6,7 @@ import loader from "./assets/icons/loader.gif";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import { setAvatarRoute } from "./utils/APIRoutes";
+import { setAvatarRoute } from "./assets/utils/APIRoutes";
 export default function SetAvatar() {
   const api = `https://api.multiavatar.com/4645646`;
   const navigate = useNavigate();
@@ -20,11 +20,6 @@ export default function SetAvatar() {
     draggable: true,
     theme: "dark",
   };
-
-  useEffect(async () => {
-    if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))
-      navigate("/login");
-  }, []);
 
   const setProfilePicture = async () => {
     if (selectedAvatar === undefined) {
@@ -52,17 +47,20 @@ export default function SetAvatar() {
     }
   };
 
-  useEffect(async () => {
-    const data = [];
-    for (let i = 0; i < 4; i++) {
-      const image = await axios.get(
-        `${api}/${Math.round(Math.random() * 1000)}`
-      );
-      const buffer = new Buffer(image.data);
-      data.push(buffer.toString("base64"));
+  useEffect(() => {
+    async function fetch() {
+      const data = [];
+      for (let i = 0; i < 4; i++) {
+        const image = await axios.get(
+          `${api}/${Math.round(Math.random() * 1000)}`
+        );
+        const buffer = new Buffer(image.data);
+        data.push(buffer.toString("base64"));
+      }
+      setAvatars(data);
+      setIsLoading(false);
     }
-    setAvatars(data);
-    setIsLoading(false);
+    fetch();
   }, []);
   return (
     <>
@@ -72,7 +70,7 @@ export default function SetAvatar() {
         </Container>
       ) : (
         <Container>
-          <div className="title-container">
+          <div className="title-container text-3xl font-bold text-white drop-shadow-lg shadow-white">
             <h1>Pick an Avatar as your profile picture</h1>
           </div>
           <div className="avatars">

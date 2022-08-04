@@ -13,6 +13,7 @@ import exitFullScreen from "./assets/icons/exit-full-screen.png";
 import { useState } from "react";
 import Private from "./assets/routers/private";
 import LandingPage from "./pages/landingPage";
+import SetAvatar from "./components/chat/SetAvatar";
 
 function App() {
   const handle = useFullScreenHandle();
@@ -62,6 +63,7 @@ function App() {
               <Route path="sign_up" element={<Register full={true} />} />
               <Route path="terms" element={<Terms />} />
               <Route path="home" element={<Private />} />
+              <Route path="/setAvatar" element={<SetAvatar />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </div>
