@@ -12,6 +12,7 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import exitFullScreen from "./assets/icons/exit-full-screen.png";
 import { useState } from "react";
 import Private from "./assets/routers/private";
+import LandingPage from "./pages/landingPage";
 
 function App() {
   const handle = useFullScreenHandle();
@@ -55,9 +56,10 @@ function App() {
         <BrowserRouter>
           <div>
             <Routes>
-              <Route path="" element={<Navigate to="home" />} />
+              {/*<Route path="" element={<Navigate to="home" />} />*/}
+              <Route path="" element={<LandingPage />} />
               <Route path="login" element={<Login />} />
-              <Route path="sign_in" element={<Register full={true} />} />
+              <Route path="sign_up" element={<Register full={true} />} />
               <Route path="terms" element={<Terms />} />
               <Route path="home" element={<Private />} />
               <Route path="*" element={<PageNotFound />} />

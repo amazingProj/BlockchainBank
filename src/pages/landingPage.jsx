@@ -1,32 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import Header from "../components/landingPage/Header";
+import HeroHome from "../components/landingPage/HeroHome";
+import FeaturesHome from "../components/landingPage/Features";
+import FeaturesBlocks from "../components/landingPage/FeaturesBlocks";
+import Testimonials from "../components/landingPage/Testimonials";
+import Newsletter from "../components/landingPage/Newsletter";
+import Footer from "../components/landingPage/Footer";
 
 function LandingPage() {
   return (
-    <div>
-      <div className="drawer drawer-end">
-        <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
-          {/* Page content here */}
-          <label
-            htmlFor="my-drawer-4"
-            className="drawer-button btn btn-primary"
-          >
-            Open drawer
-          </label>
-        </div>
-        <div className="drawer-side">
-          <label htmlFor="my-drawer-4" className="drawer-overlay" />
-          <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-            {/* Sidebar content here */}
-            <li>
-              <a>Login</a>
-            </li>
-            <li>
-              <a>Sidebar Item 2</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <div className="flex flex-col min-h-screen overflow-hidden">
+      {/*  Site header */}
+      <Header />
+
+      {/*  Page content */}
+      <main className="flex-grow">
+        {/*  Page sections */}
+        <HeroHome />
+        <FeaturesHome />
+        <FeaturesBlocks />
+        <Testimonials />
+        <Newsletter />
+      </main>
+
+      {/*  Site footer */}
+      <Footer />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import styled from "styled-components";
-import { allUsersRoute, host } from "./utils/APIRoutes";
+import { allUsersRoute, host } from "./assets/utils/APIRoutes";
 import ChatContainer from "./ChatContainer";
 import Contacts from "./Contacts";
 import Welcome from "./Welcome";
@@ -25,6 +25,15 @@ export default function Chat(props) {
     { _id: "dfkhdsfh", username: "Asaf" },
     { _id: "dshgfdsfh", username: "Ariel" },
   ];
+
+  const chatList = [{}];
+
+  useEffect(() => {
+    async function fetchData() {
+      setCurrentUser(chatList);
+    }
+    fetchData();
+  }, []);
 
   useEffect(() => {
     setContacts(contactsList);

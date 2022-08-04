@@ -42,7 +42,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="bg-white">
       <section className="w-screen h-screen">
         <div className="px-6 h-full text-gray-800">
           <div className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
@@ -83,7 +83,7 @@ const Login = () => {
                   <p className="text-sm font-semibold mt-2 pt-1 mb-0">
                     Don't have an account?
                     <a
-                      href="/sign_in"
+                      href="/sign_up"
                       className="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
                     >
                       Register
