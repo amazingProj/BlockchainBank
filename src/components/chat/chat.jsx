@@ -38,13 +38,15 @@ export default function Chat(props) {
     __v: 0,
   };
 
-  /*useEffect(() => {
+  useEffect(() => {
     async function fetch() {
-      setCurrentUser(await JSON.parse(localStorage.getItem("some key")));
+      setCurrentUser(
+        await JSON.parse(localStorage.getItem("chat-app-current-user"))
+      );
     }
 
     fetch();
-  }, []);*/
+  }, []);
 
   useEffect(() => {
     if (validUser) {
@@ -55,9 +57,9 @@ export default function Chat(props) {
 
   useEffect(() => {
     async function fetch() {
-      if (validUser) {
-        if (validUser.isAvatarImageSet) {
-          const data = await axios.get(`${allUsersRoute}/${validUser._id}`);
+      if (currentUser) {
+        if (currentUser.isAvatarImageSet) {
+          const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
           setContacts(data.data);
         } else {
           navigate("/setAvatar");

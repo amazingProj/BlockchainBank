@@ -33,8 +33,33 @@ const Login = () => {
     return true;
   };
 
-  const login = () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (validateForm()) {
+      const { username, password } = values;
+      const { data } = await Axios.post(loginRoute, {
+        username,
+        password,
+      });
+      if (data.status === true) {
+        localStorage.setItem(
+          "chat-app-current-user",
+          JSON.stringify(data.user)
+        );
+      }
+    }
+  };
+
+  const login = async () => {
     if (!validateForm()) return;
+    const { username, password } = values;
+    const { data } = await Axios.post(loginRoute, {
+      username,
+      password,
+    });
+    if (data.status === true) {
+      localStorage.setItem("chat-app-current-user", JSON.stringify(data.user));
+    }
     Axios({
       method: "POST",
       data: {
@@ -84,7 +109,7 @@ const Login = () => {
         <div className="px-6 h-full text-gray-800">
           <div className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
             <div className="p-10 bg-white rounded-xl drop-shadow-lg space-y-5 xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
-              <form>
+              <form action="" onSubmit={(event) => handleSubmit(event)}>
                 <div className="flex">
                   <div className="mb-6 text-7xl">LevCoin Bank</div>
                   <div>Ltd.</div>
