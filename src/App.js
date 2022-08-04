@@ -12,8 +12,8 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import exitFullScreen from "./assets/icons/exit-full-screen.png";
 import { useState } from "react";
 import Private from "./assets/routers/private";
-import LandingPage from "./pages/landingPage";
 import SetAvatar from "./components/chat/SetAvatar";
+import ValidPage from "./pages/validPage";
 
 function App() {
   const handle = useFullScreenHandle();
@@ -31,7 +31,10 @@ function App() {
 
   return (
     <div>
-      <button className="mt-3 mr-1 absolute top-0 right-0 " onClick={clicked}>
+      <button
+        className="hidden mt-3 mr-1 absolute top-0 right-0 "
+        onClick={clicked}
+      >
         {" "}
         <img src={fullScreen} alt="full_screen" width="30" height="30" />
       </button>
@@ -58,7 +61,7 @@ function App() {
           <div>
             <Routes>
               {/*<Route path="" element={<Navigate to="home" />} />*/}
-              <Route path="" element={<LandingPage />} />
+              <Route path="" element={<ValidPage />} />
               <Route path="login" element={<Login />} />
               <Route path="sign_up" element={<Register full={true} />} />
               <Route path="terms" element={<Terms />} />
