@@ -61,7 +61,7 @@ const Home = (props) => {
               <br />
               <br />
               <br />
-              <hr id="chat" className="border-hidden" />
+              {/*<hr id="chat" className="border-hidden" />
 
               <div className="mb-20 mt-20 text-center">
                 <div className="text-5xl mb-3">Chat</div>
@@ -70,7 +70,7 @@ const Home = (props) => {
 
               <Chat user={false} />
               <br />
-              <br />
+          <br />*/}
             </div>
           ) : (
             <div>
@@ -79,15 +79,10 @@ const Home = (props) => {
               <br />
               <br />
               <hr id="home" className="border-hidden" />
-
               <HomeComponent />
-
               <hr id="withdraws" className="border-hidden" />
-
               <Withdraw />
-
               <hr id="new_account" className="border-hidden" />
-
               <div className="mt-20 mb-10">
                 <div className="text-center text-5xl mb-5">
                   New account request
@@ -97,46 +92,36 @@ const Home = (props) => {
                   <div>Create a new account</div>
                 </div>
               </div>
-
               <NewAccountForm />
-
               <br />
-
               <hr id="transactions" className="border-hidden" />
-
               <div className="text-center text-5xl mt-20 mb-10">
                 Transactions
               </div>
-
               <Transactions />
-
               <hr id="transfer" className="border-hidden" />
-
               <div>
                 <div className="text-center text-5xl mt-20 mb-10">
                   Transfer money
                 </div>{" "}
                 <Transfer />
               </div>
-
               <hr id="my_loans" className="border-hidden" />
-
               <div className="text-center text-5xl mt-20 mb-10">My loans</div>
-
               <Loans />
               <br />
               <br />
               <br />
+              {/*
               <hr id="chat" className="border-hidden" />
-
               <div className="mb-20 mt-20 text-center">
                 <div className="text-5xl mb-3">Chat</div>
                 <div className="text-xl">Have Chat with manager</div>
               </div>
-
               <Chat user={true} />
               <br />
               <br />
+          */}
             </div>
           )}
         </div>

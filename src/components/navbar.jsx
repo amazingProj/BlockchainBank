@@ -36,7 +36,7 @@ const Navbar = (props) => {
                         <a href="#users">All Users</a>
                       </li>
                       <li className="hover:bg-zinc-300 mt-2 mr-10">
-                        <a href="#chat">Chat</a>
+                        <a href="chat">Chat</a>
                       </li>
                       <li
                         className="hover:bg-zinc-300 mt-2 mr-10"
@@ -70,7 +70,7 @@ const Navbar = (props) => {
                       </li>
 
                       <li className="hover:bg-zinc-300 mt-2 mr-10">
-                        <a href="#chat">Chat</a>
+                        <a href="chat">Chat</a>
                       </li>
                       <li
                         className="hover:bg-zinc-300 mt-2 mr-10"
@@ -110,7 +110,7 @@ const Navbar = (props) => {
             </li>
 
             <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#chat">Chat</a>
+              <a href="chat">Chat</a>
             </li>
 
             <li
@@ -147,7 +147,7 @@ const Navbar = (props) => {
             </li>
 
             <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#chat">Chat</a>
+              <a href="chat">Chat</a>
             </li>
 
             <li
