@@ -8,24 +8,29 @@ export default function Contacts({ contacts, changeChat }) {
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
 
+  useEffect(() => {
+    async function fetch() {
+      const data = await JSON.parse(
+        localStorage.getItem("chat-app-current-user")
+      );
+      setCurrentUserName(data.username);
+      setCurrentUserImage(data.avatarImage);
+    }
+    fetch();
+  }, []);
+
   const changeCurrentChat = (index, contact) => {
     setCurrentSelected(index);
     changeChat(contact);
   };
 
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("authenticated");
-    let json = JSON.parse(loggedInUser);
-    setCurrentUserName(json.role);
-  }, [currentUserName]);
-
   return (
     <>
-      {
+      {currentUserImage && currentUserImage && (
         <Container>
           <div className="brand">
             <img src={Logo} alt="logo" />
-            <h3>Chat</h3>
+            <h3>snappy</h3>
           </div>
           <div className="contacts">
             {contacts.map((contact, index) => {
@@ -38,7 +43,10 @@ export default function Contacts({ contacts, changeChat }) {
                   onClick={() => changeCurrentChat(index, contact)}
                 >
                   <div className="avatar">
-                    <img src={Profile} alt="" />
+                    <img
+                      src={`data:image/svg+xml;base64,${contact.avatarImage}`}
+                      alt=""
+                    />
                   </div>
                   <div className="username">
                     <h3>{contact.username}</h3>
@@ -49,14 +57,17 @@ export default function Contacts({ contacts, changeChat }) {
           </div>
           <div className="current-user">
             <div className="avatar">
-              <img src={Profile} alt="avatar" />
+              <img
+                src={`data:image/svg+xml;base64,${currentUserImage}`}
+                alt="avatar"
+              />
             </div>
             <div className="username">
               <h2>{currentUserName}</h2>
             </div>
           </div>
         </Container>
-      }
+      )}
     </>
   );
 }

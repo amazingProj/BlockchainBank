@@ -15,43 +15,22 @@ export default function Chat(props) {
   const [currentChat, setCurrentChat] = useState(undefined);
   const [currentUser, setCurrentUser] = useState(undefined);
 
-  const contactsList = [
-    { _id: "dfkdshdsfh", username: "Asaf H" },
-    { _id: "dfkdshgfdsfh", username: "Ariel S" },
-    { _id: "dhdsfh", username: "El Kof" },
-  ];
-
-  const managerList = [
-    { _id: "dfkhdsfh", username: "Asaf" },
-    { _id: "dshgfdsfh", username: "Ariel" },
-  ];
-
-  const chatList = [{}];
-
-  const validUser = {
-    username: "Asaf",
-    email: "asss@gmail.com",
-    password: "12121212",
-    isAvatarImageSet: false,
-    avatarImage: "",
-    _id: "62ebd5aaf41154bf6e0e9c4d",
-    __v: 0,
-  };
-
   useEffect(() => {
     async function fetch() {
-      setCurrentUser(
-        await JSON.parse(localStorage.getItem("chat-app-current-user"))
-      );
+      if (!localStorage.getItem("chat-app-current-user")) {
+        navigate("/login");
+      } else {
+        setCurrentUser(
+          await JSON.parse(localStorage.getItem("chat-app-current-user"))
+        );
+      }
     }
-
     fetch();
   }, []);
-
   useEffect(() => {
-    if (validUser) {
+    if (currentUser) {
       socket.current = io(host);
-      socket.current.emit("add-user", validUser._id);
+      socket.current.emit("add-user", currentUser._id);
     }
   }, [currentUser]);
 
@@ -74,19 +53,18 @@ export default function Chat(props) {
   };
 
   return (
-    <Container>
-      <div className="container">
-        <Contacts
-          contacts={props.user ? managerList : contacts}
-          changeChat={handleChatChange}
-        />
-        {currentChat === undefined ? (
-          <Welcome />
-        ) : (
-          <ChatContainer currentChat={currentChat} socket={socket} />
-        )}
-      </div>
-    </Container>
+    <>
+      <Container>
+        <div className="container">
+          <Contacts contacts={contacts} changeChat={handleChatChange} />
+          {currentChat === undefined ? (
+            <Welcome />
+          ) : (
+            <ChatContainer currentChat={currentChat} socket={socket} />
+          )}
+        </div>
+      </Container>
+    </>
   );
 }
 

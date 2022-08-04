@@ -93,6 +93,8 @@ const Login = () => {
         window.location.replace("/home");
       } else if (res.data == "No user exists") {
         toast.error("Wrong Username or Password.", toastOptions);
+      } else if (res.data == "Authentification failed") {
+        toast.error("Something went wrong.", toastOptions);
       }
     });
   };
