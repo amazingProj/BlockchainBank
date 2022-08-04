@@ -5,7 +5,7 @@ const Terms = () => {
   return (
     <div className="bg-white">
       <a
-        href="/sign_in"
+        href="/sign_up"
         className="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
       >
         <img src={arrowBack} alt="arrow_back" width="30" height="30" />

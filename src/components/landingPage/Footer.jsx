@@ -152,7 +152,7 @@ function Footer() {
           </ul>
 
           {/* Copyrights note */}
-          <div className="text-sm text-gray-600 mr-4">Made by <a className="text-blue-600 hover:underline" href="https://cruip.com/">Cruip</a>. All rights reserved.</div>
+          <div className="text-sm text-gray-600 mr-4">All rights reserved to lev coin bank corporation.</div>
 
         </div>
 
