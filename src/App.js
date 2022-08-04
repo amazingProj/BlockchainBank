@@ -14,6 +14,7 @@ import { useState } from "react";
 import Private from "./assets/routers/private";
 import SetAvatar from "./components/chat/SetAvatar";
 import ValidPage from "./pages/validPage";
+import PrivateChat from "./assets/routers/privateChat";
 
 function App() {
   const handle = useFullScreenHandle();
@@ -66,6 +67,7 @@ function App() {
               <Route path="sign_up" element={<Register full={true} />} />
               <Route path="terms" element={<Terms />} />
               <Route path="home" element={<Private />} />
+              <Route path="chat" element={<PrivateChat />} />
               <Route path="/setAvatar" element={<SetAvatar />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>

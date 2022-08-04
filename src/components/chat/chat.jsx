@@ -28,23 +28,45 @@ export default function Chat(props) {
 
   const chatList = [{}];
 
-  useEffect(() => {
-    async function fetchData() {
-      setCurrentUser(chatList);
+  const validUser = {
+    username: "Asaf",
+    email: "asss@gmail.com",
+    password: "12121212",
+    isAvatarImageSet: false,
+    avatarImage: "",
+    _id: "62ebd5aaf41154bf6e0e9c4d",
+    __v: 0,
+  };
+
+  /*useEffect(() => {
+    async function fetch() {
+      setCurrentUser(await JSON.parse(localStorage.getItem("some key")));
     }
-    fetchData();
-  }, []);
+
+    fetch();
+  }, []);*/
 
   useEffect(() => {
-    setContacts(contactsList);
-  }, [contacts]);
-
-  useEffect(() => {
-    if (currentUser) {
+    if (validUser) {
       socket.current = io(host);
-      socket.current.emit("add-user", currentUser._id);
+      socket.current.emit("add-user", validUser._id);
     }
   }, [currentUser]);
+
+  useEffect(() => {
+    async function fetch() {
+      if (validUser) {
+        if (validUser.isAvatarImageSet) {
+          const data = await axios.get(`${allUsersRoute}/${validUser._id}`);
+          setContacts(data.data);
+        } else {
+          navigate("/setAvatar");
+        }
+      }
+    }
+    fetch();
+  }, [currentUser]);
+
   const handleChatChange = (chat) => {
     setCurrentChat(chat);
   };

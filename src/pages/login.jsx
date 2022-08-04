@@ -1,12 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import arrowBack from "../components/assets/icons/back-arrow-icon.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { loginRoute } from "../components/chat/assets/utils/APIRoutes";
 
 const Login = () => {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [values, setValues] = useState({ username: "", password: "" });
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
+
+  const handleChange = (event) => {
+    setValues({ ...values, [event.target.name]: event.target.value });
+  };
+
+  const validateForm = () => {
+    const { username, password } = values;
+    if (username === "") {
+      toast.error("Both Username and Password are required.", toastOptions);
+      return false;
+    } else if (password === "") {
+      toast.error("Both Username and Password are required.", toastOptions);
+      return false;
+    }
+    return true;
+  };
 
   const login = () => {
+    if (!validateForm()) return;
     Axios({
       method: "POST",
       data: {
@@ -38,6 +66,8 @@ const Login = () => {
           })
         );
         window.location.replace("/home");
+      } else if (res.data == "No user exists") {
+        toast.error("Wrong Username or Password.", toastOptions);
       }
     });
   };
@@ -65,18 +95,27 @@ const Login = () => {
                 <div className="mb-6">
                   <input
                     placeholder="username"
+                    name="username"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     type="text"
-                    onChange={(e) => setLoginUsername(e.target.value)}
+                    onChange={(e) => {
+                      setLoginUsername(e.target.value);
+                      handleChange(e);
+                    }}
+                    min="3"
                   />
                 </div>
                 {/* Password input */}
                 <div className="mb-6">
                   <input
                     type="password"
+                    name="password"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="password"
-                    onChange={(e) => setLoginPassword(e.target.value)}
+                    onChange={(e) => {
+                      setLoginPassword(e.target.value);
+                      handleChange(e);
+                    }}
                   />
                 </div>
                 <div className="text-center lg:text-left">
@@ -102,6 +141,7 @@ const Login = () => {
           </div>
         </div>
       </section>
+      <ToastContainer />
     </div>
   );
 };
