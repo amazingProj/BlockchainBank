@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Chart from "../components/chart";
 import Dollar from "../components/dollar";
 import Coin from "../components/coin";
 import Graph from "./graph";
+import Axios from "axios";
 
 const HomeComponent = () => {
-  const name = "Assaf Hillel";
+  const [currentUser, setCurrentUser] = useState(undefined);
 
   function padTo2Digits(num) {
     return num.toString().padStart(2, "0");
@@ -213,21 +214,38 @@ const HomeComponent = () => {
       ],
     },
   };
+
+  useEffect(() => {
+    let username = localStorage.getItem("authenticated");
+    console.log(username);
+    let json = JSON.parse(username);
+    Axios.get("http://localhost:4000/users/getUser/" + json.username).then(
+      (res) => {
+        setCurrentUser(res.data[0]);
+        console.log(res.data);
+      }
+    );
+  }, []);
+
   return (
     <div className="mb-20 mt-20">
       <div className="mt-20 p-6 max-w-2xl mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
         <div className="shrink-0"></div>
         <div>
           <div className="text-3xl font-medium text-black">
-            Welcome to LevCoin Bank {name}
+            Welcome to LevCoin Bank{" "}
+            {currentUser != undefined && currentUser.firstName}{" "}
+            {currentUser != undefined && currentUser.lastName}
           </div>
         </div>
       </div>
       <br />
       <div>
         <div className="text-center mt-4 mb-4">
-          <div className="text-3xl">Weekly account analytics and balance</div>
-          <div className="text-xl">The most left is current day.</div>
+          <div className="text-3xl mb-5">
+            Weekly account analytics and balance
+          </div>
+          <div className="mb-5 text-xl">The rightest is the current.</div>
         </div>
         <Chart
           info={data}
