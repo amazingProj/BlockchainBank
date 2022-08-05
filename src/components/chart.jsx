@@ -67,10 +67,24 @@ const options = {
 
 const numberToFix = (number, fix) => (number || 0).toFixed(fix);
 
-const Chart = ({ info, month, year, stockFullName, stockShortName }) => {
+const Chart = ({
+  info,
+  accountInfo,
+  month,
+  year,
+  stockFullName,
+  stockShortName,
+}) => {
   const data = buildData(info);
   const monthData = buildData(month);
   const yearData = buildData(year);
+
+  const [hidden, setHidden] = useState(false);
+
+  const handleClick = () => {
+    setHidden(true);
+    accountInfo(true);
+  };
 
   const [radio, setRadio] = useState(0);
 
@@ -91,7 +105,7 @@ const Chart = ({ info, month, year, stockFullName, stockShortName }) => {
   const yearRef = useRef();
 
   return (
-    <>
+    <div className={hidden ? "hidden" : ""}>
       <div className="rounded shadow-xl overflow-hidden w-full md:flex">
         <div className="flex w-full md:w-1/2 px-5 pb-4 pt-8 bg-indigo-500 text-white items-center">
           {radio == 0 ? (
@@ -204,13 +218,16 @@ const Chart = ({ info, month, year, stockFullName, stockShortName }) => {
                 </label>
               </div>
             </div>
-            <button class="mt-10 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            <button
+              onClick={handleClick}
+              class="mt-10 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+            >
               Account info
             </button>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
