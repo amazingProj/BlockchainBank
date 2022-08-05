@@ -8,7 +8,7 @@ import {
   CategoryScale,
 } from "chart.js";
 
-import React from "react";
+import React, { useState, useRef } from "react";
 
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
 const formatter = (number) =>
@@ -67,17 +67,40 @@ const options = {
 
 const numberToFix = (number, fix) => (number || 0).toFixed(fix);
 
-const Chart = ({ info, stockFullName, stockShortName }) => {
+const Chart = ({ info, month, year, stockFullName, stockShortName }) => {
   const data = buildData(info);
+  const monthData = buildData(month);
+  const yearData = buildData(year);
+
+  const [radio, setRadio] = useState(0);
+
+  const handleChangeWeek = (e) => {
+    setRadio(0);
+  };
+
+  const handleChangeMonth = (e) => {
+    setRadio(1);
+  };
+
+  const handleChangeYear = (e) => {
+    setRadio(2);
+  };
+
+  const weekRef = useRef();
+  const monthRef = useRef();
+  const yearRef = useRef();
 
   return (
     <>
-      <div
-        className="rounded shadow-xl overflow-hidden w-full md:flex ml-40"
-        style={{ maxWidth: "900px" }}
-      >
+      <div className="rounded shadow-xl overflow-hidden w-full md:flex">
         <div className="flex w-full md:w-1/2 px-5 pb-4 pt-8 bg-indigo-500 text-white items-center">
-          <Line type="line" data={data} options={options} />
+          {radio == 0 ? (
+            <Line type="line" data={data} options={options} />
+          ) : radio == 1 ? (
+            <Line type="line" data={monthData} options={options} />
+          ) : (
+            <Line type="line" data={yearData} options={options} />
+          )}
         </div>
         <div className="flex w-full md:w-1/2 p-10 bg-gray-100 text-gray-600 items-center">
           <div className="w-full">
@@ -125,6 +148,60 @@ const Chart = ({ info, stockFullName, stockShortName }) => {
                 <div className="flex-1 pl-3 text-right">
                   {formatter(info.price.cap) + " ILS"}
                 </div>
+              </div>
+            </div>
+            <div className="flex mt-10">
+              <div className="flex items-center mr-4">
+                <input
+                  ref={weekRef}
+                  id="week"
+                  type="radio"
+                  defaultValue={true}
+                  name="inline-radio-group"
+                  onChange={handleChangeWeek}
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label
+                  htmlFor="week"
+                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                >
+                  Weekly
+                </label>
+              </div>
+              <div className="flex items-center mr-4">
+                <input
+                  ref={monthRef}
+                  id="month"
+                  type="radio"
+                  defaultValue={false}
+                  onChange={handleChangeMonth}
+                  name="inline-radio-group"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label
+                  htmlFor="month"
+                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                >
+                  Monthly
+                </label>
+              </div>
+              <div className="flex items-center mr-4">
+                <input
+                  ref={yearRef}
+                  defaultChecked={false}
+                  onChange={handleChangeYear}
+                  id="year"
+                  type="radio"
+                  defaultValue=""
+                  name="inline-radio-group"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label
+                  htmlFor="year"
+                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                >
+                  Annually
+                </label>
               </div>
             </div>
           </div>

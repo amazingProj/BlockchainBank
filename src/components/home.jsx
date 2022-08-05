@@ -220,7 +220,6 @@ const HomeComponent = () => {
           <div className="text-3xl font-medium text-black">
             Welcome to LevCoin Bank {name}
           </div>
-          
         </div>
       </div>
       <br />
@@ -231,27 +230,12 @@ const HomeComponent = () => {
         </div>
         <Chart
           info={data}
+          month={graphTwoData}
+          year={graphThreeData}
           stockFullName="Your Balance."
           stockShortName="Balance."
         />
         <br />
-        <div className="mt-10 mb-20">
-          <div className="text-center mt-4 mb-4">
-            <div className="text-3xl">Monthly account analytics</div>
-            <div className="text-xl">The most left is current date.</div>
-          </div>
-
-          <Graph info={graphTwoData} />
-        </div>
-
-        <div className="mt-5 mb-5">
-          <div className="text-center mt-4 mb-4">
-            <div className="text-3xl">Annually account analytics</div>
-            <div className="text-xl">The most left is current month.</div>
-          </div>
-
-          <Graph info={graphThreeData} />
-        </div>
       </div>
     </div>
   );
