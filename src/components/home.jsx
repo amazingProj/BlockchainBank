@@ -36,13 +36,14 @@ const HomeComponent = () => {
   const getAllPastYearForGraph = () => {
     let result = [];
     const d = new Date();
-    let monIndex = d.getMonth();
+    const monIndex = d.getMonth();
+    let monNewIndex;
     let name = month[d.getMonth()];
-    let index = 0;
-    for (let i = month.length; i > 0; --i) {
-      monIndex = Math.abs(monIndex - i);
-      result[index] = month[monIndex];
-      ++index;
+    let index = 1;
+    for (let i = 0; i < month.length; ++i) {
+      monNewIndex =
+        monIndex - i > 0 ? monIndex - i : monIndex - i + (month.length - 1);
+      result[index++] = month[monNewIndex];
     }
     return result;
   };
@@ -64,10 +65,10 @@ const HomeComponent = () => {
       one = tempArray[0];
       two = tempArray[1];
       three = tempArray[2];
-      result[i] = `${one} ${two} ${three}`;
+      result[i + 1] = `${one} ${two} ${three}`;
       now.setDate(now.getDate() - 1);
     }
-    return result;
+    return result.reverse();
   };
 
   const getAllPrevMonth = () => {
@@ -87,7 +88,7 @@ const HomeComponent = () => {
       }
       now.setDate(now.getDate() - 1);
     }
-    return result;
+    return result.reverse();
   };
 
   console.log(getAllPrevWeek());
