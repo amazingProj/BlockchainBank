@@ -15,12 +15,7 @@ const Private = () => {
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000);
-    console.log(isAuth);
   }, []);
-
-  useEffect(() => {
-    console.log(isAuth);
-  }, [isAuth]);
 
   useEffect(() => {
     if (!isAuth) {
@@ -35,11 +30,9 @@ const Private = () => {
         url: "http://localhost:4000/users/login",
       }).then((res) => {
         if (res.data == "Basic user authenticated") {
-          console.log(res.data);
           setIsAuth(true);
           setIsAdminAuth(false);
           setIsPending(false);
-          console.log(isAdminAuth);
         } else if (res.data == "Manager authenticated") {
           setIsAuth(true);
           setIsAdminAuth(true);

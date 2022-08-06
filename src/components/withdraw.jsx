@@ -1,86 +1,125 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Money from "./assets/icons/money.jpg";
 import Money2 from "./assets/icons/money2.jpg";
 import Money3 from "./assets/icons/money3.jpg";
+import "./assets/styles/mirror.css";
+import arrowBack from "../components/assets/icons/back-arrow-icon.png";
+import WithdrawOne from "./withdrawOne";
+import Glow from "./glow";
+
 const Withdraw = () => {
-  const allWithdraws = () => {
-    setSize(withdrawsListSize);
+  const [oneFragment, setOneFragment] = useState(false);
+  const [twoFragment, setTwoFragment] = useState(false);
+  const [threeFragment, setThreeFragment] = useState(false);
+
+  const init = () => {
+    console.log("clicked");
+    setOneFragment(false);
+    setTwoFragment(false);
+    setThreeFragment(false);
   };
-  const withdrawsList = [
-    { date: "01/07/2022", sentEmail: "asafdav@g.jct.ac.l", money: "2$" },
-    { date: "01/06/2022", sentEmail: "safdav@g.jct.ac.l", money: "3$" },
-    { date: "01/05/2022", sentEmail: "aafdav@g.jct.ac.l", money: "1$" },
-    { date: "01/04/2022", sentEmail: "asfdav@g.jct.ac.l", money: "1$" },
-    { date: "01/03/2022", sentEmail: "afdav@g.jct.ac.l", money: "2$" },
-    { date: "11/02/2022", sentEmail: "dav@g.jct.ac.l", money: "1$" },
-    { date: "10/02/2022", sentEmail: "asafv@jct.ac.l", money: "2.1$" },
-    { date: "09/02/2022", sentEmail: "asav@g.jct.ac.l", money: "1$" },
-    { date: "08/02/2022", sentEmail: "asv@l.c", money: "1.2$" },
-  ];
 
-  var [size, setSize] = useState(5);
-  const withdrawsListSize = withdrawsList.length;
+  const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 6000);
+  }, []);
   const rnd1 = Math.floor(Math.random() * 3) + 1;
   return (
-    <div class="grid h-auto place-items-center">
-      <div className="mt-10">
-        <div className="text-5xl text-center mt-10 mb-2">Withdraws history</div>
-        <div className="text-xl text-center mt-10 mb-10">
-          Follow all withdraws
-        </div>
-        <div>
-          <div className="p-4 max-w-md bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-            <div className="flex justify-between items-center mb-4">
-              <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
-                Latest Withdraws
-              </h5>
-              <div
-                onClick={allWithdraws}
-                className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
-              >
-                View all
+    <div>
+      <div>
+        <br />
+        <br />
+        <br />
+        <button
+          className={
+            oneFragment || twoFragment || threeFragment ? "" : "hidden"
+          }
+          onClick={init}
+        >
+          <img src={arrowBack} alt="arrow_back" width="30" height="30" />
+        </button>
+
+        <div
+          className={
+            oneFragment || twoFragment || threeFragment ? "hidden" : ""
+          }
+        >
+          <div className="items-center justify-center h-screen rounded shadow-xl overflow-hidden w-full md:flex">
+            <div className="flex w-full md:w-1/2 p-10 bg-gray-100 text-gray-600 items-center">
+              <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                <img className="w-full" src={Money3} alt="money" />
+                <div className="px-6 py-4">
+                  <div className="font-bold text-xl mb-2">
+                    See Your Loan History
+                  </div>
+                  <p className="text-gray-700 text-base">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Voluptatibus quia, nulla! Maiores et perferendis eaque,
+                    exercitationem praesentium nihil.
+                  </p>
+                </div>
+                <div className="px-6 pt-4 pb-2">
+                  <button
+                    onClick={() => setOneFragment(true)}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+                  >
+                    History
+                  </button>
+                </div>
               </div>
             </div>
-            <div className="flow-root">
-              <ul
-                role="list"
-                className="divide-y divide-gray-200 dark:divide-gray-700"
-              >
-                {withdrawsList.slice(0, size).map((withdraw) => (
-                  <li className="py-3 sm:py-4">
-                    <div className="flex items-center space-x-4">
-                      <div className="flex-shrink-0">
-                        <img
-                          className="w-8 h-8 rounded-full"
-                          src={
-                            Math.floor(Math.random() * 3) + 1 == 1
-                              ? Money
-                              : rnd1 == 2
-                              ? Money2
-                              : Money3
-                          }
-                          alt="money image"
-                        />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                          {withdraw.date}
-                        </p>
-                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                          {withdraw.sentEmail}
-                        </p>
-                      </div>
-                      <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                        {withdraw.money}
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+            <div className="flex w-full md:w-1/2 p-10 bg-gray-100 text-gray-600 items-center">
+              <div className="w-full">
+                <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                  <img className="w-full" src={Money2} alt="money" />
+                  <div className="px-6 py-4">
+                    <div className="font-bold text-xl mb-2">Request a Loan</div>
+                    <p className="text-gray-700 text-base">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Voluptatibus quia, nulla! Maiores et perferendis eaque,
+                      exercitationem praesentium nihil.
+                    </p>
+                  </div>
+                  <div className="px-6 pt-4 pb-2">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                      Request
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex w-full md:w-1/2 p-10 bg-gray-100 text-gray-600 items-center">
+              <div className="w-full">
+                <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                  <img
+                    id="mirror"
+                    className="w-full"
+                    src={Money3}
+                    alt="Sunset in the mountains"
+                  />
+                  <div className="px-6 py-4">
+                    <div className="font-bold text-xl mb-2">Loan to Others</div>
+                    <p className="text-gray-700 text-base">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Voluptatibus quia, nulla! Maiores et perferendis eaque,
+                      exercitationem praesentium nihil.
+                    </p>
+                  </div>
+                  <div className="px-6 pt-4 pb-2">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                      Loan
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div className={oneFragment ? "" : "hidden"}>
+        <WithdrawOne />
       </div>
     </div>
   );

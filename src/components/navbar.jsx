@@ -99,19 +99,27 @@ const Navbar = (props) => {
               !nav ? "hidden" : "absolute mt-20 bg-zinc-200 w-full px-8 mb-5"
             }
           >
-            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#home">Home</a>
-            </li>
-            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#accounts">Manage Accounts</a>
-            </li>
-            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#users">All Users</a>
-            </li>
+            <a href="#home">
+              <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+                Home
+              </li>
+            </a>
+            <a href="#accounts">
+              <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+                Manage Accounts
+              </li>
+            </a>
+            <a href="#users">
+              <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+                All Users
+              </li>
+            </a>
 
-            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="chat">Chat</a>
-            </li>
+            <a href="chat">
+              <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+                Chat
+              </li>
+            </a>
 
             <li
               className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full"
@@ -126,29 +134,43 @@ const Navbar = (props) => {
               !nav ? "hidden" : "absolute mt-20 bg-zinc-200 w-full px-8 mb-5"
             }
           >
-            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#home">Home</a>
-            </li>
-            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#withdraws">Withdraws</a>
-            </li>
-            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#new_account">New Account</a>
-            </li>
-            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#transactions">Transactions</a>
-            </li>
-            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#transfer">Transfer</a>
-            </li>
+            <a href="#home">
+              <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+                Home
+              </li>
+            </a>
+            <a href="#withdraws">
+              <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+                Withdraws
+              </li>
+            </a>
+            <a href="#new_account">
+              <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+                New Account
+              </li>
+            </a>
+            <a href="#transactions">
+              <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+                Transactions
+              </li>
+            </a>
+            <a href="#transfer">
+              <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+                Transfer
+              </li>
+            </a>
 
-            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="#my_loans">My loans</a>
-            </li>
+            <a href="#my_loans">
+              <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+                My loans
+              </li>
+            </a>
 
-            <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-              <a href="chat">Chat</a>
-            </li>
+            <a href="chat">
+              <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
+                Chat
+              </li>
+            </a>
 
             <li
               className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full"

@@ -7,16 +7,12 @@ import NewAccountForm from "../components/new_account_form";
 import Transactions from "../components/transactions";
 import Transfer from "../components/transfer";
 import Loans from "../components/loans";
-import Chat from "../components/chat/chat";
 import Admin from "../components/admin";
 import Table from "../components/table";
 import UsersTable from "../components/usersTable";
-import { useLocation } from "react-router-dom";
 
 const Home = (props) => {
   const [loading, setLoading] = useState(true);
-
-  const location = useLocation();
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 500);
@@ -88,11 +84,6 @@ const Home = (props) => {
               {(window.location.href.match(/([^\/]*)\/*$/)[1] == "home#home" ||
                 window.location.href.match(/([^\/]*)\/*$/)[1] == "home") && (
                 <div>
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-
                   <hr id="home" className="border-hidden" />
                   <HomeComponent />
                 </div>
