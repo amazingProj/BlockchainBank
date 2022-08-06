@@ -89,40 +89,10 @@ const Home = (props) => {
                 </div>
               )}
 
-              {window.location.href.match(/([^\/]*)\/*$/)[1] ==
-                "home#withdraws" && (
+              {window.location.href.match(/([^\/]*)\/*$/)[1] == "home#loan" && (
                 <div>
-                  <hr id="withdraws" className="border-hidden" />
+                  <hr id="loan" className="border-hidden" />
                   <Withdraw />
-                </div>
-              )}
-
-              {window.location.href.match(/([^\/]*)\/*$/)[1] ==
-                "home#new_account" && (
-                <div>
-                  <hr id="new_account" className="border-hidden" />
-                  <div className="mt-20 mb-10">
-                    <div className="text-center text-5xl mb-5">
-                      New account request
-                    </div>
-
-                    <div className="text-center text-xl">
-                      <div>Create a new account</div>
-                    </div>
-                  </div>
-                  <NewAccountForm />
-                  <br />
-                </div>
-              )}
-
-              {window.location.href.match(/([^\/]*)\/*$/)[1] ==
-                "home#transactions" && (
-                <div>
-                  <hr id="transactions" className="border-hidden" />
-                  <div className="text-center text-5xl mt-20 mb-10">
-                    Transactions
-                  </div>
-                  <Transactions />
                 </div>
               )}
 
@@ -136,20 +106,6 @@ const Home = (props) => {
                     </div>{" "}
                     <Transfer />
                   </div>
-                </div>
-              )}
-
-              {window.location.href.match(/([^\/]*)\/*$/)[1] ==
-                "home#my_loans" && (
-                <div>
-                  <hr id="my_loans" className="border-hidden" />
-                  <div className="text-center text-5xl mt-20 mb-10">
-                    My loans
-                  </div>
-                  <Loans />
-                  <br />
-                  <br />
-                  <br />
                 </div>
               )}
             </div>

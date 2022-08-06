@@ -54,19 +54,10 @@ const Navbar = (props) => {
                         <a href="#home">Home</a>
                       </li>
                       <li className="hover:bg-zinc-300 mt-2 mr-10">
-                        <a href="#withdraws">Withdraws</a>
-                      </li>
-                      <li className="hover:bg-zinc-300 mt-2 mr-10">
-                        <a href="#new_account">New Account</a>
-                      </li>
-                      <li className="hover:bg-zinc-300 mt-2 mr-10">
-                        <a href="#transactions">Transactions</a>
+                        <a href="#loan">Loans</a>
                       </li>
                       <li className="hover:bg-zinc-300 mt-2 mr-10">
                         <a href="#transfer">Transfer</a>
-                      </li>
-                      <li className="hover:bg-zinc-300 mt-2 mr-10">
-                        <a href="#my_loans">My loans</a>
                       </li>
 
                       <li className="hover:bg-zinc-300 mt-2 mr-10">
@@ -139,30 +130,14 @@ const Navbar = (props) => {
                 Home
               </li>
             </a>
-            <a href="#withdraws">
+            <a href="#loan">
               <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-                Withdraws
-              </li>
-            </a>
-            <a href="#new_account">
-              <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-                New Account
-              </li>
-            </a>
-            <a href="#transactions">
-              <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-                Transactions
+                Loan
               </li>
             </a>
             <a href="#transfer">
               <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
                 Transfer
-              </li>
-            </a>
-
-            <a href="#my_loans">
-              <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-                My loans
               </li>
             </a>
 

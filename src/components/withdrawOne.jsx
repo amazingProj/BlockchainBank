@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Glow from "./glow";
 import Money from "./assets/icons/money.jpg";
 import Money2 from "./assets/icons/money2.jpg";
 import Money3 from "./assets/icons/money3.jpg";
@@ -37,7 +36,6 @@ const WithdrawOne = () => {
     <div>
       {loading ? (
         <div>
-          <Glow />
         </div>
       ) : (
         <div class="grid h-auto place-items-center">
@@ -67,7 +65,10 @@ const WithdrawOne = () => {
                     className="divide-y divide-gray-200 dark:divide-gray-700"
                   >
                     {withdrawsList.slice(0, size).map((withdraw) => (
-                      <li className="py-3 sm:py-4">
+                      <li
+                        key={withdraw.email + withdraw.date}
+                        className="py-3 sm:py-4"
+                      >
                         <div className="flex items-center space-x-4">
                           <div className="flex-shrink-0">
                             <img

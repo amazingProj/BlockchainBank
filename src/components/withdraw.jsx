@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Money from "./assets/icons/money.jpg";
 import Money2 from "./assets/icons/money2.jpg";
 import Money3 from "./assets/icons/money3.jpg";
@@ -18,12 +18,6 @@ const Withdraw = () => {
     setTwoFragment(false);
     setThreeFragment(false);
   };
-
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 6000);
-  }, []);
   const rnd1 = Math.floor(Math.random() * 3) + 1;
   return (
     <div>
@@ -31,14 +25,21 @@ const Withdraw = () => {
         <br />
         <br />
         <br />
-        <button
+        
+        <div
           className={
             oneFragment || twoFragment || threeFragment ? "" : "hidden"
           }
           onClick={init}
         >
-          <img src={arrowBack} alt="arrow_back" width="30" height="30" />
-        </button>
+          <img
+            onClick={init}
+            src={arrowBack}
+            alt="arrow_back"
+            width="30"
+            height="30"
+          />
+        </div>
 
         <div
           className={
