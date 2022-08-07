@@ -97,7 +97,7 @@ const Register = (props) => {
         <div className="px-6 h-full text-gray-800 ">
           <div className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
             <form className="p-10 bg-white rounded-xl drop-shadow-lg space-y-5">
-              <div className="mb-8 text-7xl">Create a new account</div>
+              <div className="mb-8 text-7xl">Request a new account</div>
               <div className="mb-6 text-3xl">LevCoin Bank</div>
               <div className="mb-6">
                 <label
@@ -217,7 +217,7 @@ const Register = (props) => {
                   className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                   onClick={createAccount}
                 >
-                  Create Account
+                  Continue to next Step
                 </button>
               </div>
             </form>

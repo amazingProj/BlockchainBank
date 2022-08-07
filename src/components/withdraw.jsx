@@ -5,6 +5,8 @@ import Money3 from "./assets/icons/money3.jpg";
 import "./assets/styles/mirror.css";
 import arrowBack from "../components/assets/icons/back-arrow-icon.png";
 import WithdrawOne from "./withdrawOne";
+import WithdrawTwo from "./withdrawTwo";
+import WithdrawThree from "./withdrawThree";
 import Glow from "./glow";
 
 const Withdraw = () => {
@@ -25,21 +27,6 @@ const Withdraw = () => {
         <br />
         <br />
         <br />
-        
-        <div
-          className={
-            oneFragment || twoFragment || threeFragment ? "" : "hidden"
-          }
-          onClick={init}
-        >
-          <img
-            onClick={init}
-            src={arrowBack}
-            alt="arrow_back"
-            width="30"
-            height="30"
-          />
-        </div>
 
         <div
           className={
@@ -83,7 +70,9 @@ const Withdraw = () => {
                     </p>
                   </div>
                   <div className="px-6 pt-4 pb-2">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                    <button
+                      onClick={() => setTwoFragment(true)}
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
                       Request
                     </button>
                   </div>
@@ -108,7 +97,9 @@ const Withdraw = () => {
                     </p>
                   </div>
                   <div className="px-6 pt-4 pb-2">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                    <button
+                      onClick={() => setThreeFragment(true)}
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
                       Loan
                     </button>
                   </div>
@@ -121,6 +112,14 @@ const Withdraw = () => {
 
       <div className={oneFragment ? "" : "hidden"}>
         <WithdrawOne />
+      </div>
+
+      <div className={twoFragment ? "" : "hidden"}>
+        <WithdrawTwo />
+      </div>
+
+      <div className={threeFragment ? "" : "hidden"}>
+        <WithdrawThree />
       </div>
     </div>
   );

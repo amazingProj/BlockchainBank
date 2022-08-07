@@ -30,7 +30,7 @@ const Navbar = (props) => {
                       </li>
 
                       <li className="hover:bg-zinc-300 mt-2 mr-10">
-                        <a href="#accounts">Manage Accounts</a>
+                        <a href="#accounts">Account requests</a>
                       </li>
                       <li className="hover:bg-zinc-300 mt-2 mr-10">
                         <a href="#users">All Users</a>
@@ -97,12 +97,12 @@ const Navbar = (props) => {
             </a>
             <a href="#accounts">
               <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-                Manage Accounts
+                Account requests
               </li>
             </a>
-            <a href="#users">
+            <a href="#loans">
               <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
-                All Users
+                Loan
               </li>
             </a>
 
