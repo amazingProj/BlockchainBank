@@ -52,9 +52,9 @@ function HeroHome() {
               className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4"
               data-aos="zoom-y-out"
             >
-              Make your website{" "}
+              Make your money{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
-                wonderful
+                secured
               </span>
             </h1>
             <div className="max-w-3xl mx-auto">
@@ -63,8 +63,8 @@ function HeroHome() {
                 data-aos="zoom-y-out"
                 data-aos-delay="150"
               >
-                Our landing page template works on all devices, so you only have
-                to set it up once, and get beautiful results forever.
+                Our block chain virtual bank works on all devices, so you only
+                have to set it up once, and get beautiful results forever.
               </p>
               <div
                 className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center"
@@ -72,12 +72,12 @@ function HeroHome() {
                 data-aos-delay="300"
               >
                 <div>
-                  <a
+                  <div
                     className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0"
-                    href="#0"
+                    onClick={handleLearnMore}
                   >
                     Start free trial
-                  </a>
+                  </div>
                 </div>
                 <div>
                   <div

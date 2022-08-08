@@ -1,9 +1,28 @@
-import React, { useState } from "react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import React, { useState, useRef, useEffect } from "react";
+import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
+import { io } from "socket.io-client";
+import { host } from "../components/chat/assets/utils/APIRoutes";
+import NotificationBadge, { Effect } from "react-notification-badge";
 
 const Navbar = (props) => {
   const [nav, setNav] = useState(false);
+  const socket = useRef();
+  var [notification, setNotification] = useState([]);
+
+  useEffect(() => {
+    socket.current = io(host);
+  }, []);
+
+  useEffect(() => {
+    if (socket.current) {
+      socket.current.on("zero", (userDetails) => {
+        console.log("Here");
+        console.log(userDetails);
+        setNotification([...notification, userDetails]);
+      });
+    }
+  }, []);
 
   const handleClick = () => setNav(!nav);
 
@@ -25,11 +44,22 @@ const Navbar = (props) => {
                 <div className="flex items-center">
                   {props.isManager && (
                     <ul className="hidden md:flex text-xl">
-                      <li className="hover:bg-zinc-300 mt-2 mr-10">
+                      <li className="hover:bg-zinc-300 mt-2 mr-5">
                         <a href="#home">Home</a>
                       </li>
+                      <li className="hover:bg-zinc-300">
+                        <NotificationBadge
+                          count={notification.length}
+                          effect={Effect.SCALE}
+                        />
+                        <BellIcon
+                          className="mt-2 mr-5 ml-5"
+                          width={30}
+                          height={30}
+                        />
+                      </li>
 
-                      <li className="hover:bg-zinc-300 mt-2 mr-10">
+                      <li className="hover:bg-zinc-300 mt-2 ml-3 mr-10">
                         <a href="#accounts">Account requests</a>
                       </li>
                       <li className="hover:bg-zinc-300 mt-2 mr-10">
@@ -49,11 +79,20 @@ const Navbar = (props) => {
 
                   {!props.isManager && (
                     <ul className="hidden md:flex text-xl">
-                      <li className="hover:bg-zinc-300 mt-2 mr-10">
+                      <li className="hover:bg-zinc-300 mt-2 mr-5">
                         {" "}
                         <a href="#home">Home</a>
                       </li>
-                      <li className="hover:bg-zinc-300 mt-2 mr-10">
+
+                      <li className="hover:bg-zinc-300">
+                        <BellIcon
+                          className="mt-2 mr-5 ml-5"
+                          width={30}
+                          height={30}
+                        />
+                      </li>
+
+                      <li className="hover:bg-zinc-300 ml-3 mt-2 mr-10">
                         <a href="#loan">Loans</a>
                       </li>
                       <li className="hover:bg-zinc-300 mt-2 mr-10">
@@ -95,6 +134,7 @@ const Navbar = (props) => {
                 Home
               </li>
             </a>
+
             <a href="#accounts">
               <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
                 Account requests
@@ -130,6 +170,7 @@ const Navbar = (props) => {
                 Home
               </li>
             </a>
+
             <a href="#loan">
               <li className="hover:bg-zinc-300 border-b-2 border-zinc-300 w-full">
                 Loan

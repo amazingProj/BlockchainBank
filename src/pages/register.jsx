@@ -189,6 +189,19 @@ const Register = (props) => {
                 />
               </div>
 
+              <label
+                for="message"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+              >
+                Leave a message to manager
+              </label>
+              <textarea
+                id="message"
+                rows="6"
+                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Leave a request message..."
+              ></textarea>
+
               <div class="mb-6 flex items-center">
                 <input
                   id="link-checkbox"
@@ -217,7 +230,7 @@ const Register = (props) => {
                   className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                   onClick={createAccount}
                 >
-                  Continue to next Step
+                  Send email to manager
                 </button>
               </div>
             </form>

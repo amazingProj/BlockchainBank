@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 
 function Table() {
+  useEffect(() => {
+    Axios.get("http://localhost:4000/users/").then((res) => {
+      setTable(res.data);
+      console.log(res.data + "-----------------");
+    });
+  }, []);
+  const [table, setTable] = useState([]);
   const tableList = [
     { name: "Assaf Hillel", age: "21", balance: "18$", email: "jsd@gmail.com" },
-    { name: " Hillel Assaf", age: "21", balance: "18$", email: "djksd@gmail.com" },
+    {
+      name: " Hillel Assaf",
+      age: "21",
+      balance: "18$",
+      email: "djksd@gmail.com",
+    },
     { name: "Ariel", age: "24", balance: "1008$", email: "js23d@gmail.com" },
-    { name: "Elya", age: "29", balance: "1128$", email: "js4s32123d@gmail.com" },
+    {
+      name: "Elya",
+      age: "29",
+      balance: "1128$",
+      email: "js4s32123d@gmail.com",
+    },
   ];
   return (
     <div>
@@ -18,7 +36,7 @@ function Table() {
               </th>
               <th scope="col" className="py-3 px-6">
                 <div className="flex items-center">
-                  Age
+                  Date of birth
                   <a href="#">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -70,20 +88,18 @@ function Table() {
             </tr>
           </thead>
           <tbody>
-            {tableList.map((row) => (
+            {table.map((row) => (
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
                   scope="row"
                   className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  {row.name}
+                  {row.firstName} {row.lastName}
                 </th>
-                <td className="py-4 px-6">{row.age}</td>
+                <td className="py-4 px-6">{row.birthday}</td>
                 <td className="py-4 px-6">{row.email}</td>
-                <td className="py-4 px-6">{row.balance}</td>
-                <td className="py-4 px-6 text-right">
-                  
-                </td>
+                <td className="py-4 px-6">{row.phone}</td>
+                <td className="py-4 px-6 text-right"></td>
               </tr>
             ))}
           </tbody>

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "./assets/icons/profile.jpg";
 import Image2 from "./assets/icons/profile2.jpg";
+import Axios from "axios";
 
 function UsersTable() {
+  
   const tableList = [
     { name: "Assaf Hillel", age: "21", balance: "18$", email: "jsd@gmail.com" },
     {
