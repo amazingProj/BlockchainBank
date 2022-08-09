@@ -5,6 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import BirthdayPicker from "../components/birthdayPicker";
+import { useNavigate } from "react-router-dom";
 
 const Register = (props) => {
   const firstName = useRef();
@@ -12,6 +13,8 @@ const Register = (props) => {
   const email = useRef();
   const password = useRef();
   const confirmedPassword = useRef();
+  const message = useRef();
+  const birthday = useRef();
   const [terms, setTerms] = useState(false);
   const [values, setValues] = useState({
     username: "",
@@ -77,12 +80,23 @@ const Register = (props) => {
       user["password"] = passwordVAR;
       user["firstName"] = firstName.current.firstName;
       user["lastName"] = lastName.current.firstName;
+      user["birthday"] = birthday.current.value;
+      console.log(message.current.value);
+      user["email"] = email.current.value;
+      user["message"] = message.current.value;
 
       axios.post("http://localhost:4000/users/register", user).then((res) => {
         console.log(res.data);
+        if (res.data == "User created") {
+          toast("Your user successfully created.");
+        } else if (res.data == "User already exists") {
+          toast.error("User already exists.", toastOptions);
+        }
       });
     }
   };
+
+  const navigate = useNavigate();
 
   return (
     <div className="bg-white">
@@ -143,7 +157,7 @@ const Register = (props) => {
                 >
                   Enter birthday
                 </label>
-                <BirthdayPicker />
+                <BirthdayPicker reference={birthday} />
               </div>
 
               {/* Email input */}
@@ -196,6 +210,7 @@ const Register = (props) => {
                 Leave a message to manager
               </label>
               <textarea
+                ref={message}
                 id="message"
                 rows="6"
                 className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
