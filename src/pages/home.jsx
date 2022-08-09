@@ -10,6 +10,8 @@ import Loans from "../components/loans";
 import Admin from "../components/admin";
 import Table from "../components/table";
 import UsersTable from "../components/usersTable";
+import FormModal from "../components/formModal";
+
 
 const Home = (props) => {
   const [loading, setLoading] = useState(true);
@@ -17,6 +19,12 @@ const Home = (props) => {
   useEffect(() => {
     setTimeout(() => setLoading(false), 500);
   }, []);
+
+ 
+
+  const [visible, setVisible] = useState(true);
+
+ 
 
   return (
     <div>
@@ -76,6 +84,14 @@ const Home = (props) => {
                   <br />
                   <br />
                   <br />
+                </div>
+              )}
+
+              {window.location.href
+                .match(/([^\/]*)\/*$/)[1]
+                .endsWith("#new") && (
+                <div className={visible ? " " : "hidden"}>
+                  <FormModal />
                 </div>
               )}
             </div>
