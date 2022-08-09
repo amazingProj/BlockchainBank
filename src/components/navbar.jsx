@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { io } from "socket.io-client";
 import { host } from "../components/chat/assets/utils/APIRoutes";
 import NotificationBadge, { Effect } from "react-notification-badge";
+import Axios from "axios";
 
 const Navbar = (props) => {
   const [nav, setNav] = useState(false);
@@ -14,15 +15,30 @@ const Navbar = (props) => {
     socket.current = io(host);
   }, []);
 
+  const [currentUser, setCurrentUser] = useState(undefined);
+
+  useEffect(() => {
+    let username = localStorage.getItem("authenticated");
+    let json = JSON.parse(username);
+
+    Axios.get("http://localhost:4000/users/getUser/" + json.username).then(
+      (res) => {
+        setCurrentUser(res.data[0]);
+        console.log(res.data[0]);
+        console.log(currentUser);
+        socket.current.emit("notify-user", res.data[0]._id);
+      }
+    );
+  }, []);
+
   useEffect(() => {
     if (socket.current) {
       socket.current.on("zero", (userDetails) => {
-        console.log("Here");
         console.log(userDetails);
-        setNotification([...notification, userDetails]);
+        setNotification((prev) => [...prev, userDetails]);
       });
     }
-  }, []);
+  }, [notification]);
 
   const handleClick = () => setNav(!nav);
 
@@ -48,15 +64,18 @@ const Navbar = (props) => {
                         <a href="#home">Home</a>
                       </li>
                       <li className="hover:bg-zinc-300">
-                        <NotificationBadge
-                          count={notification.length}
-                          effect={Effect.SCALE}
-                        />
-                        <BellIcon
-                          className="mt-2 mr-5 ml-5"
-                          width={30}
-                          height={30}
-                        />
+                        <div className="mr-2">
+                          {console.log(notification.length)}
+                          <NotificationBadge
+                            count={notification.length}
+                            effect={Effect.SCALE}
+                          />
+                          <BellIcon
+                            className="mr-5 ml-5"
+                            width={30}
+                            height={30}
+                          />
+                        </div>
                       </li>
 
                       <li className="hover:bg-zinc-300 mt-2 ml-3 mr-10">
@@ -85,11 +104,18 @@ const Navbar = (props) => {
                       </li>
 
                       <li className="hover:bg-zinc-300">
-                        <BellIcon
-                          className="mt-2 mr-5 ml-5"
-                          width={30}
-                          height={30}
-                        />
+                        <div className="mr-2">
+                          {console.log(notification.length)}
+                          <NotificationBadge
+                            count={notification.length}
+                            effect={Effect.SCALE}
+                          />
+                          <BellIcon
+                            className="mt-2 mr-5 ml-5"
+                            width={30}
+                            height={30}
+                          />
+                        </div>
                       </li>
 
                       <li className="hover:bg-zinc-300 ml-3 mt-2 mr-10">
@@ -117,6 +143,22 @@ const Navbar = (props) => {
                     ) : (
                       <XIcon className="w-5" />
                     )}
+                  </div>
+
+                  <div
+                    className={notification.length > 0 ? "text-sm" : "hidden"}
+                  >
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <ul>
+                      {notification.map((notify) =>
+                        true ? <li>Approve user {notify.boom}</li> : <li></li>
+                      )}
+                    </ul>
                   </div>
                 </div>
               </div>

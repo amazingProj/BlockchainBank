@@ -130,7 +130,8 @@ function Testimonials() {
                     alt="Testimonial 01"
                   />
                 </div>
-                <blockquote className="mt-10 text-xl font-medium mb-4">
+                <blockquote className="mt-10
+                 text-xl font-medium mb-4">
                   “ I love this product and would recommend it to anyone. Could
                   be not easier to use, and our multiple websites are wonderful.
                   We get nice comments all the time. “
