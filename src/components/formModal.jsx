@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function FormModal() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="">
       <div
         id="authentication-modal"
         tabIndex={-1}
         aria-hidden="true"
-        className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
+        className="flex items-center justify-center h-screen"
       >
         <div className="relative p-4 w-full max-w-md h-full md:h-auto">
           {/* Modal content */}

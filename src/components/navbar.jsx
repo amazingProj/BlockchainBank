@@ -5,11 +5,19 @@ import { io } from "socket.io-client";
 import { host } from "../components/chat/assets/utils/APIRoutes";
 import NotificationBadge, { Effect } from "react-notification-badge";
 import Axios from "axios";
+import {
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/menu";
 
 const Navbar = (props) => {
   const [nav, setNav] = useState(false);
   const socket = useRef();
   var [notification, setNotification] = useState([]);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     socket.current = io(host);
@@ -71,20 +79,61 @@ const Navbar = (props) => {
                           <a href="#home">Home</a>
                         </li>
 
-                        <li className="hover:bg-zinc-300">
-                          <div className="mr-2">
-                            {console.log(notification.length)}
-                            <NotificationBadge
-                              count={notification.length}
-                              effect={Effect.SCALE}
-                            />
-                            <BellIcon
-                              className="mr-5 ml-5"
-                              width={30}
-                              height={30}
-                            />
-                          </div>
-                        </li>
+                        <Menu>
+                          <MenuButton p={1}>
+                            <li
+                              className="hover:bg-zinc-300"
+                             
+                            >
+                              <div className="mr-2">
+                                {console.log(notification.length)}
+                                <NotificationBadge
+                                  count={notification.length}
+                                  effect={Effect.SCALE}
+                                />
+                                <BellIcon
+                                  className="mr-5 ml-5"
+                                  width={30}
+                                  height={30}
+                                />
+                              </div>
+                            </li>
+                          </MenuButton>
+                          <MenuList pl={2}>
+                            {
+                              <div>
+                                <div
+                                  className={
+                                    " mr-4 mt-text-sm" 
+                                  }
+                                >
+                                  {notification.length > 0 ? "" : ""}
+                                  <br />
+                                  <br />
+                                  <br />
+                                  <br />
+                                  <br />
+                                  <br />
+                                  <ul>
+                                    {notification.map((notify) =>
+                                      true ? (
+                                        <MenuItem>
+                                          {" "}
+                                          <a href="#new">
+                                            <li>Approve user {notify.boom}</li>
+                                          </a>
+                                        </MenuItem>
+                                      ) : (
+                                        <li></li>
+                                      )
+                                    )}
+                                  </ul>
+                                </div>
+                              </div>
+                            }
+                          </MenuList>
+                        </Menu>
+                        
 
                         <li className="hover:bg-zinc-300 mt-2 ml-3 mr-10">
                           <a href="#accounts">Account requests</a>
@@ -111,7 +160,10 @@ const Navbar = (props) => {
                           <a href="#home">Home</a>
                         </li>
 
-                        <li className="hover:bg-zinc-300">
+                        <li
+                          className="hover:bg-zinc-300"
+                          onClick={setVisible(!visible)}
+                        >
                           <div className="mr-2">
                             {console.log(notification.length)}
                             <NotificationBadge
@@ -145,7 +197,10 @@ const Navbar = (props) => {
                       </ul>
                     )}
 
-                    <div className="md:hidden mr-4" onClick={handleClick}>
+                    <div
+                      className="text-left md:hidden mr-4"
+                      onClick={handleClick}
+                    >
                       {!nav ? (
                         <MenuIcon className="w-5" />
                       ) : (
@@ -153,26 +208,27 @@ const Navbar = (props) => {
                       )}
                     </div>
 
-                    <div
-                      className={notification.length > 0 ? "text-sm" : "hidden"}
-                    >
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <ul>
-                        {notification.map((notify) =>
-                          true ? (
-                            <a href="#new">
-                              <li>Approve user {notify.boom}</li>
-                            </a>
-                          ) : (
-                            <li></li>
-                          )
-                        )}
-                      </ul>
+                    <div>
+                      <div className={visible ? " mr-4 mt-text-sm" : "hidden"}>
+                        {notification.length > 0 ? "" : ""}
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <ul>
+                          {notification.map((notify) =>
+                            true ? (
+                              <a href="#new">
+                                <li>Approve user {notify.boom}</li>
+                              </a>
+                            ) : (
+                              <li></li>
+                            )
+                          )}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
