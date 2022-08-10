@@ -14,7 +14,7 @@ ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
 const formatter = (number) =>
   number > 999999 ? (number / 1000000).toFixed(1) + "M" : number;
 
-const buildData = ({ chartData }) => ({
+const buildData = ({ chartData, balance }) => ({
   labels: chartData.labels,
   datasets: [
     {
@@ -74,6 +74,9 @@ const Chart = ({
   year,
   stockFullName,
   stockShortName,
+  balance,
+  dollar,
+  ILS,
 }) => {
   const data = buildData(info);
   const monthData = buildData(month);
@@ -129,22 +132,67 @@ const Chart = ({
             </h6>
             <div className="flex w-full items-end mb-2">
               <span className="block leading-none text-3xl text-gray-800">
-                {numberToFix(info.price.current, 3) + "$"}
+                {numberToFix(balance, 3) + " Lev Coin"}
               </span>
-              <span className="block leading-5 text-sm ml-4 text-green-500">
-                {`${info.price.high - info.price.low < 0 ? "▼" : "▲"} ${(
-                  info.price.high - info.price.low
-                ).toFixed(3)} (${(
-                  (info.price.high / info.price.low) * 100 -
-                  100
-                ).toFixed(3)}%)`}
-              </span>
+
+              {radio == 0 ? (
+                <span
+                  className={
+                    info.price.high - info.price.low < 0
+                      ? "text-red-500"
+                      : "text-green-500"
+                  }
+                >
+                  <span className="block leading-5 text-sm ml-4 ">
+                    {`${info.price.high - info.price.low < 0 ? "▼" : "▲"} ${(
+                      info.price.high - info.price.low
+                    ).toFixed(3)} (${(
+                      (info.price.high / info.price.low) * 100 -
+                      100
+                    ).toFixed(3)}%)`}
+                  </span>
+                </span>
+              ) : radio == 1 ? (
+                <span
+                  className={
+                    month.price.high - month.price.low < 0
+                      ? "text-red-500"
+                      : "text-green-500"
+                  }
+                >
+                  <span className="block leading-5 text-sm ml-4 ">
+                    {`${month.price.high - month.price.low < 0 ? "▼" : "▲"} ${(
+                      month.price.high - month.price.low
+                    ).toFixed(3)} (${(
+                      (month.price.high / month.price.low) * 100 -
+                      100
+                    ).toFixed(3)}%)`}
+                  </span>
+                </span>
+              ) : (
+                <span
+                  className={
+                    year.price.high - year.price.low < 0
+                      ? "text-red-500"
+                      : "text-green-500"
+                  }
+                >
+                  <span className="block leading-5 text-sm ml-4 ">
+                    {`${year.price.high - year.price.low < 0 ? "▼" : "▲"} ${(
+                      year.price.high - year.price.low
+                    ).toFixed(3)} (${(
+                      (year.price.high / year.price.low) * 100 -
+                      100
+                    ).toFixed(3)}%)`}
+                  </span>
+                </span>
+              )}
+            </div>
+            <div className="block leading-none text-xl text-gray-800 mb-2">
+              {numberToFix(ILS, 3) + " ILS"}
             </div>
             <div className="block leading-none text-xl text-gray-800 mb-4">
-              {numberToFix(info.price.current * 3, 3) + " ILS"}
-            </div>
-            <div className="block leading-none text-xl text-gray-800 mb-4">
-              {1.13 + " LevCoin"}
+              {numberToFix(dollar, 3) + " Dollars"}
             </div>
             <div className="flex w-full text-xs">
               <div className="flex w-5/12">
@@ -152,7 +200,7 @@ const Chart = ({
                   LevCoin
                 </div>
                 <div className="flex-1 px-3 text-right">
-                  {info.price.open.toFixed(3) + " ILS"}
+                  {numberToFix(ILS / balance, 3) + " ILS"}
                 </div>
               </div>
               <div className="flex w-7/12">
@@ -160,7 +208,7 @@ const Chart = ({
                   Dollar
                 </div>
                 <div className="flex-1 pl-3 text-right">
-                  {formatter(info.price.cap) + " ILS"}
+                  {numberToFix(ILS / dollar, 3) + " ILS"}
                 </div>
               </div>
             </div>

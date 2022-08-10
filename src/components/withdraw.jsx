@@ -72,14 +72,15 @@ const Withdraw = () => {
                   <div className="px-6 pt-4 pb-2">
                     <button
                       onClick={() => setTwoFragment(true)}
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+                    >
                       Request
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex w-full md:w-1/2 p-10 bg-gray-100 text-gray-600 items-center">
+            {/*  <div className="flex w-full md:w-1/2 p-10 bg-gray-100 text-gray-600 items-center">
               <div className="w-full">
                 <div className="max-w-sm rounded overflow-hidden shadow-lg">
                   <img
@@ -105,7 +106,7 @@ const Withdraw = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>*/}
           </div>
         </div>
       </div>

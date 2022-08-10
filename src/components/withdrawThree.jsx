@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 
 function WithdrawThree() {
+  const [table, setTable] = useState([]);
+
+  const MINUTE_MS = 60000;
+  var firstTime = true;
+
+  const handleAccept = (row) => {
+    console.log(row);
+  };
+
+  useEffect(() => {
+    Axios.get("http://localhost:4000/routes/loan/getAll").then((res) => {
+      console.log(res.data + "-----------------");
+      setTable(res.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log("Logs every minute");
+      Axios.get("http://localhost:4000/routes/loan/getAll").then((res) => {
+        console.log(res.data + "-----------------");
+        setTable(res.data);
+      });
+    }, MINUTE_MS);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div>
       <div className="text-center text-3xl mb-10">
@@ -11,16 +40,16 @@ function WithdrawThree() {
           <thead className="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
             <tr>
               <th scope="col" className="py-3 px-6 bg-blue-500">
-                Full name
+                Destination account
+              </th>
+              <th scope="col" className="py-3 px-6">
+                Recipient account
+              </th>
+              <th scope="col" className="py-3 px-6 bg-blue-500">
+                Duration
               </th>
               <th scope="col" className="py-3 px-6">
                 Amount
-              </th>
-              <th scope="col" className="py-3 px-6 bg-blue-500">
-                Period
-              </th>
-              <th scope="col" className="py-3 px-6">
-                Email
               </th>
               <th scope="col" className="py-3 px-6 bg-blue-500">
                 Action
@@ -28,86 +57,33 @@ function WithdrawThree() {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-blue-600 border-b border-blue-400">
-              <th
-                scope="row"
-                className="py-4 px-6 font-medium text-blue-50 whitespace-nowrap bg-blue-500 dark:text-blue-100"
-              >
-                Apple MacBook Pro 17"
-              </th>
-              <td className="py-4 px-6">Sliver</td>
-              <td className="py-4 px-6 bg-blue-500">Laptop</td>
-              <td className="py-4 px-6">$2999</td>
-              <td className="py-4 px-6 bg-blue-500">
-                <a href="#" className="font-medium text-white hover:underline">
-                  Approve
-                </a>
-              </td>
-            </tr>
-            <tr className="bg-blue-600 border-b border-blue-400">
-              <th
-                scope="row"
-                className="py-4 px-6 font-medium text-blue-50 whitespace-nowrap bg-blue-500 dark:text-blue-100"
-              >
-                Microsoft Surface Pro
-              </th>
-              <td className="py-4 px-6">White</td>
-              <td className="py-4 px-6 bg-blue-500">Laptop PC</td>
-              <td className="py-4 px-6">$1999</td>
-              <td className="py-4 px-6 bg-blue-500">
-                <a href="#" className="font-medium text-white hover:underline">
-                  Approve
-                </a>
-              </td>
-            </tr>
-            <tr className="bg-blue-600 border-b border-blue-400">
-              <th
-                scope="row"
-                className="py-4 px-6 font-medium text-blue-50 whitespace-nowrap bg-blue-500 dark:text-blue-100"
-              >
-                Magic Mouse 2
-              </th>
-              <td className="py-4 px-6">Black</td>
-              <td className="py-4 px-6 bg-blue-500">Accessories</td>
-              <td className="py-4 px-6">$99</td>
-              <td className="py-4 px-6 bg-blue-500">
-                <a href="#" className="font-medium text-white hover:underline">
-                  Approve
-                </a>
-              </td>
-            </tr>
-            <tr className="bg-blue-600 border-b border-blue-400">
-              <th
-                scope="row"
-                className="py-4 px-6 font-medium text-blue-50 whitespace-nowrap bg-blue-500 dark:text-blue-100"
-              >
-                Google Pixel Phone
-              </th>
-              <td className="py-4 px-6">Gray</td>
-              <td className="py-4 px-6 bg-blue-500">Phone</td>
-              <td className="py-4 px-6">$799</td>
-              <td className="py-4 px-6 bg-blue-500">
-                <a href="#" className="font-medium text-white hover:underline">
-                  Approve
-                </a>
-              </td>
-            </tr>
-            <tr className="bg-blue-600 border-blue-40">
-              <th
-                scope="row"
-                className="py-4 px-6 font-medium text-blue-50 whitespace-nowrap bg-blue-500 dark:text-blue-100"
-              >
-                Apple Watch 5
-              </th>
-              <td className="py-4 px-6">Red</td>
-              <td className="py-4 px-6 bg-blue-500">Wearables</td>
-              <td className="py-4 px-6">$999</td>
-              <td className="py-4 px-6 bg-blue-500">
-                <a href="#" className="font-medium text-white hover:underline">
-                  Approve
-                </a>
-              </td>
-            </tr>
+            {table.map((row) => (
+              <tr className="bg-blue-600 border-b border-blue-400">
+                <th
+                  scope="row"
+                  className="py-4 px-6 font-medium text-blue-50 whitespace-nowrap bg-blue-500 dark:text-blue-100"
+                >
+                  {"ID: "} {row.srcAccountId}
+                </th>
+                <td className="py-4 px-6"></td>
+                <td className="py-4 px-6 bg-blue-500">
+                  {row.duration}
+                  {" Months"}
+                </td>
+                <td className="py-4 px-6">
+                  {" "}
+                  {row.amount} {" Lev Coin"}
+                </td>
+                <td
+                  className="py-4 px-6 bg-blue-500"
+                  onClick={() => handleAccept(row)}
+                >
+                  <div className="font-medium text-white hover:underline">
+                    Approve
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

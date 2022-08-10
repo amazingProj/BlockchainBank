@@ -41,6 +41,7 @@ export default function ChatContainer({ currentChat, socket }) {
     const data = await JSON.parse(
       localStorage.getItem("chat-app-current-user")
     );
+
     socket.current.emit("send-msg", {
       to: currentChat._id,
       from: data._id,

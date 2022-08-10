@@ -30,10 +30,30 @@ const Private = () => {
         url: "http://localhost:4000/users/login",
       }).then((res) => {
         if (res.data.message == "Basic user authenticated") {
+          localStorage.setItem(
+            "authenticated",
+            JSON.stringify({
+              username: json.username,
+              password: json.password,
+              role: "User",
+              userDetails: res.data.userDetails,
+              accountDetails: res.data.accountDetails,
+            })
+          );
           setIsAuth(true);
           setIsAdminAuth(false);
           setIsPending(false);
         } else if (res.data.message == "Manager authenticated") {
+          localStorage.setItem(
+            "authenticated",
+            JSON.stringify({
+              username: json.username,
+              password: json.password,
+              role: "User",
+              userDetails: res.data.userDetails,
+              accountDetails: res.data.accountDetails,
+            })
+          );
           setIsAuth(true);
           setIsAdminAuth(true);
           setIsPending(false);

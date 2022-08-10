@@ -144,7 +144,7 @@ const Navbar = (props) => {
                           <a href="#home">Home</a>
                         </li>
 
-                        <Menu>
+                        {/* <Menu>
                           <MenuButton p={1}>
                             <li className="hover:bg-zinc-300">
                               <div className="mr-2">
@@ -185,7 +185,7 @@ const Navbar = (props) => {
                               </div>
                             }
                           </MenuList>
-                        </Menu>
+                        </Menu>*/}
 
                         <li className="hover:bg-zinc-300 ml-3 mt-2 mr-10">
                           <a href="#loan">Loans</a>

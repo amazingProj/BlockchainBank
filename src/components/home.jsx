@@ -5,8 +5,10 @@ import Axios from "axios";
 const HomeComponent = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
 
-  const currentBalance = 2.32;
+  const loggedInUser = localStorage.getItem("authenticated");
 
+  let json = JSON.parse(loggedInUser);
+  const currentBalance = json.accountDetails.balance;
   function padTo2Digits(num) {
     return num.toString().padStart(2, "0");
   }
@@ -97,8 +99,8 @@ const HomeComponent = () => {
     price: {
       current: 2.32,
       open: 2.23,
-      low: 2.215,
-      high: 2.325,
+      low: currentBalance - 5,
+      high: currentBalance,
       cap: 3.14,
       ratio: 20.1,
       dividend: 1.67,
@@ -106,19 +108,13 @@ const HomeComponent = () => {
     chartData: {
       labels: getAllPrevWeek(),
       data: [
+        currentBalance - 5,
+        currentBalance / 4,
+        currentBalance / 3,
+        currentBalance / 2,
+        currentBalance / 6,
+        currentBalance / 3.5,
         currentBalance,
-        2.215,
-        2.22,
-        2.25,
-        2.245,
-        2.27,
-        2.28,
-        2.29,
-        2.3,
-        2.29,
-        2.325,
-        2.325,
-        2.32,
       ],
     },
   };
@@ -130,8 +126,8 @@ const HomeComponent = () => {
     price: {
       current: 2.32,
       open: 2.23,
-      low: 2.215,
-      high: 2.325,
+      low: currentBalance + 0.3,
+      high: currentBalance,
       cap: 3.14,
       ratio: 20.1,
       dividend: 1.67,
@@ -140,9 +136,9 @@ const HomeComponent = () => {
       labels: getAllPrevMonth(),
       data: [
         currentBalance + 0.3,
-        2.215,
-        2.22,
-        2.25,
+        currentBalance / 9,
+        currentBalance / 55,
+        currentBalance / 7,
         2.245,
         2.27,
         2.28,
@@ -162,12 +158,12 @@ const HomeComponent = () => {
         2.3,
         2.4,
         3.1,
-        4.1,
-        3.1,
-        2.2,
-        2.245,
-        2.27,
-        2.28,
+        currentBalance - 5,
+        currentBalance / 4,
+        currentBalance / 3,
+        currentBalance / 2,
+        currentBalance / 6,
+        currentBalance / 3.5,
         currentBalance,
       ],
     },
@@ -180,8 +176,8 @@ const HomeComponent = () => {
     price: {
       current: 2.32,
       open: 2.23,
-      low: 2.215,
-      high: 2.325,
+      low: currentBalance + 10,
+      high: currentBalance,
       cap: 3.14,
       ratio: 20.1,
       dividend: 1.67,
@@ -189,8 +185,7 @@ const HomeComponent = () => {
     chartData: {
       labels: getAllPastYearForGraph(),
       data: [
-        currentBalance,
-        currentBalance + 1,
+        currentBalance + 10,
         currentBalance + 1.1,
         currentBalance + 1.2,
         currentBalance + 1.3,
@@ -201,7 +196,8 @@ const HomeComponent = () => {
         currentBalance + 1.2,
         currentBalance + 0.8,
         currentBalance + 0.3,
-        currentBalance,
+        currentBalance - 5,
+        currentBalance + 5,
       ],
     },
   };
@@ -214,6 +210,7 @@ const HomeComponent = () => {
 
     Axios.get("http://localhost:4000/users/getUser/" + json.username).then(
       (res) => {
+        console.log();
         setCurrentUser(res.data[0]);
       }
     );
@@ -247,6 +244,48 @@ const HomeComponent = () => {
   const handleUpdate = () => {
     let newPassword = password.current.value;
   };
+
+  var [dollar, setDollar] = useState();
+  var [ILS, setILS] = useState();
+  const MINUTE_MS = 60000;
+  var firstTime = true;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log("Logs every minute");
+      Axios({
+        method: "POST",
+        data: {
+          amount: json.accountDetails.balance,
+        },
+        withCredentials: true,
+        url: "http://localhost:4000/routes/account/exchange",
+      }).then((res) => {
+        console.log(res.data);
+        setDollar(res.data.USD);
+        setILS(res.data.ILS);
+      });
+    }, MINUTE_MS);
+
+    if (firstTime) {
+      Axios({
+        method: "POST",
+        data: {
+          amount: json.accountDetails.balance,
+        },
+        withCredentials: true,
+        url: "http://localhost:4000/routes/account/exchange",
+      }).then((res) => {
+        console.log(res.data);
+        setDollar(res.data.USD);
+        setILS(res.data.ILS);
+      });
+      firstTime = false;
+    }
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleFirstNameChanged = () => {};
 
   return (
     <div>
@@ -393,6 +432,7 @@ const HomeComponent = () => {
                           </svg>
                         </div>
                         <input
+                          onChange={handleFirstNameChanged}
                           ref={firstName}
                           type="text"
                           className="w-11/12 focus:outline-none focus:text-gray-600 p-2"
@@ -560,6 +600,9 @@ const HomeComponent = () => {
                 <div className="mb-5 text-xl">The rightest is the current.</div>
               </div>
               <Chart
+                dollar={dollar}
+                ILS={ILS}
+                balance={currentBalance}
                 accountInfo={getData}
                 info={data}
                 month={graphTwoData}
