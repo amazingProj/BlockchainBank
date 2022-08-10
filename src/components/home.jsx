@@ -5,6 +5,8 @@ import Axios from "axios";
 const HomeComponent = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
 
+  const currentBalance = 2.32;
+
   function padTo2Digits(num) {
     return num.toString().padStart(2, "0");
   }
@@ -88,7 +90,6 @@ const HomeComponent = () => {
     return result.reverse();
   };
 
-  const currentBalance = 2.23;
   const data = {
     stockFullName: "SW Limited.",
     stockShortName: "ASX:SFW",
@@ -138,7 +139,7 @@ const HomeComponent = () => {
     chartData: {
       labels: getAllPrevMonth(),
       data: [
-        currentBalance,
+        currentBalance + 0.3,
         2.215,
         2.22,
         2.25,
@@ -162,16 +163,12 @@ const HomeComponent = () => {
         2.4,
         3.1,
         4.1,
-        1.1,
+        3.1,
         2.2,
         2.245,
         2.27,
         2.28,
-        2.29,
-        2.3,
-        2.29,
-        2.325,
-        2.325,
+        currentBalance,
       ],
     },
   };
@@ -193,18 +190,18 @@ const HomeComponent = () => {
       labels: getAllPastYearForGraph(),
       data: [
         currentBalance,
-        2.215,
-        2.22,
-        2.25,
-        2.245,
-        2.27,
-        2.28,
-        2.29,
-        2.3,
-        2.29,
-        2.325,
-        2.325,
-        2.32,
+        currentBalance + 1,
+        currentBalance + 1.1,
+        currentBalance + 1.2,
+        currentBalance + 1.3,
+        currentBalance + 1.4,
+        currentBalance + 1.3,
+        currentBalance + 1.2,
+        currentBalance + 1.1,
+        currentBalance + 1.2,
+        currentBalance + 0.8,
+        currentBalance + 0.3,
+        currentBalance,
       ],
     },
   };

@@ -69,8 +69,9 @@ const Login = () => {
       withCredentials: true,
       url: "http://localhost:4000/users/login",
     }).then((res) => {
-      console.log(res);
-      if (res.data == "Basic user authenticated") {
+      console.log(res.data);
+      if (res.data.message == "Basic user authenticated") {
+        toast(res.data.message);
         console.log("data successfully");
         localStorage.setItem(
           "authenticated",
@@ -78,22 +79,27 @@ const Login = () => {
             username: loginUsername,
             password: loginPassword,
             role: "User",
+            userDetails: res.data.userDetails,
+            accountDetails: res.data.accountDetails,
           })
         );
         window.location.replace("/home");
-      } else if (res.data == "Manager authenticated") {
+      } else if (res.data.message == "Manager authenticated") {
+        toast(res.data.message);
         localStorage.setItem(
           "authenticated",
           JSON.stringify({
             username: loginUsername,
             password: loginPassword,
             role: "Admin",
+            userDetails: res.data.userDetails,
+            accountDetails: res.data.accountDetails,
           })
         );
         window.location.replace("/home");
-      } else if (res.data == "No user exists") {
+      } else if (res.data.message == "No user exists") {
         toast.error("Wrong Username or Password.", toastOptions);
-      } else if (res.data == "Authentification failed") {
+      } else if (res.data.message == "Authentification failed") {
         toast.error("Something went wrong.", toastOptions);
       }
     });

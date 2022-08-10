@@ -81,10 +81,7 @@ const Navbar = (props) => {
 
                         <Menu>
                           <MenuButton p={1}>
-                            <li
-                              className="hover:bg-zinc-300"
-                             
-                            >
+                            <li className="hover:bg-zinc-300">
                               <div className="mr-2">
                                 {console.log(notification.length)}
                                 <NotificationBadge
@@ -102,25 +99,16 @@ const Navbar = (props) => {
                           <MenuList pl={2}>
                             {
                               <div>
-                                <div
-                                  className={
-                                    " mr-4 mt-text-sm" 
-                                  }
-                                >
+                                <div className={" mr-4 mt-text-sm"}>
                                   {notification.length > 0 ? "" : ""}
-                                  <br />
-                                  <br />
-                                  <br />
-                                  <br />
-                                  <br />
-                                  <br />
+
                                   <ul>
                                     {notification.map((notify) =>
                                       true ? (
                                         <MenuItem>
                                           {" "}
                                           <a href="#new">
-                                            <li>Approve user {notify.boom}</li>
+                                            <li></li>
                                           </a>
                                         </MenuItem>
                                       ) : (
@@ -133,11 +121,7 @@ const Navbar = (props) => {
                             }
                           </MenuList>
                         </Menu>
-                        
 
-                        <li className="hover:bg-zinc-300 mt-2 ml-3 mr-10">
-                          <a href="#accounts">Account requests</a>
-                        </li>
                         <li className="hover:bg-zinc-300 mt-2 mr-10">
                           <a href="#users">All Users</a>
                         </li>
@@ -160,23 +144,48 @@ const Navbar = (props) => {
                           <a href="#home">Home</a>
                         </li>
 
-                        <li
-                          className="hover:bg-zinc-300"
-                          onClick={setVisible(!visible)}
-                        >
-                          <div className="mr-2">
-                            {console.log(notification.length)}
-                            <NotificationBadge
-                              count={notification.length}
-                              effect={Effect.SCALE}
-                            />
-                            <BellIcon
-                              className="mt-2 mr-5 ml-5"
-                              width={30}
-                              height={30}
-                            />
-                          </div>
-                        </li>
+                        <Menu>
+                          <MenuButton p={1}>
+                            <li className="hover:bg-zinc-300">
+                              <div className="mr-2">
+                                {console.log(notification.length)}
+                                <NotificationBadge
+                                  count={notification.length}
+                                  effect={Effect.SCALE}
+                                />
+                                <BellIcon
+                                  className="mr-5 ml-5"
+                                  width={30}
+                                  height={30}
+                                />
+                              </div>
+                            </li>
+                          </MenuButton>
+                          <MenuList pl={2}>
+                            {
+                              <div>
+                                <div className={" mr-4 mt-text-sm"}>
+                                  {notification.length > 0 ? "" : ""}
+
+                                  <ul>
+                                    {notification.map((notify) =>
+                                      true ? (
+                                        <MenuItem>
+                                          {" "}
+                                          <a href="#new">
+                                            <li></li>
+                                          </a>
+                                        </MenuItem>
+                                      ) : (
+                                        <li></li>
+                                      )
+                                    )}
+                                  </ul>
+                                </div>
+                              </div>
+                            }
+                          </MenuList>
+                        </Menu>
 
                         <li className="hover:bg-zinc-300 ml-3 mt-2 mr-10">
                           <a href="#loan">Loans</a>
@@ -221,7 +230,7 @@ const Navbar = (props) => {
                           {notification.map((notify) =>
                             true ? (
                               <a href="#new">
-                                <li>Approve user {notify.boom}</li>
+                                <li>Approve user </li>
                               </a>
                             ) : (
                               <li></li>

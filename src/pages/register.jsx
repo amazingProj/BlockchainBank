@@ -11,6 +11,7 @@ const Register = (props) => {
   const firstName = useRef();
   const lastName = useRef();
   const email = useRef();
+  const username = useRef();
   const password = useRef();
   const confirmedPassword = useRef();
   const message = useRef();
@@ -76,7 +77,7 @@ const Register = (props) => {
     console.log(passwordVAR);
     if (passwordVAR == confirmedPassword.current.value && terms) {
       let user = {};
-      user["username"] = email.current.value;
+      user["username"] = username.current.value;
       user["password"] = passwordVAR;
       user["firstName"] = firstName.current.firstName;
       user["lastName"] = lastName.current.firstName;
@@ -142,6 +143,7 @@ const Register = (props) => {
                   Enter a username
                 </label>
                 <input
+                  ref={username}
                   type="text"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   placeholder="Username"

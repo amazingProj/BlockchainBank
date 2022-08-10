@@ -29,18 +29,19 @@ const Private = () => {
         withCredentials: true,
         url: "http://localhost:4000/users/login",
       }).then((res) => {
-        if (res.data == "Basic user authenticated") {
+        if (res.data.message == "Basic user authenticated") {
           setIsAuth(true);
           setIsAdminAuth(false);
           setIsPending(false);
-        } else if (res.data == "Manager authenticated") {
+        } else if (res.data.message == "Manager authenticated") {
           setIsAuth(true);
           setIsAdminAuth(true);
           setIsPending(false);
         } else {
+          console.log("here pending");
           setIsAuth(true);
-          setIsAdminAuth(false);
           setIsPending(true);
+          console.log(isPending);
         }
       });
     }

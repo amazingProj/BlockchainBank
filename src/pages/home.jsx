@@ -12,7 +12,6 @@ import Table from "../components/table";
 import UsersTable from "../components/usersTable";
 import FormModal from "../components/formModal";
 
-
 const Home = (props) => {
   const [loading, setLoading] = useState(true);
 
@@ -20,11 +19,7 @@ const Home = (props) => {
     setTimeout(() => setLoading(false), 500);
   }, []);
 
- 
-
   const [visible, setVisible] = useState(true);
-
- 
 
   return (
     <div>
@@ -51,7 +46,7 @@ const Home = (props) => {
                 </div>
               )}
 
-              {window.location.href.match(/([^\/]*)\/*$/)[1] ==
+              {/*window.location.href.match(/([^\/]*)\/*$/)[1] ==
                 "home#accounts" && (
                 <div>
                   <br />
@@ -68,7 +63,7 @@ const Home = (props) => {
 
                   <UsersTable />
                 </div>
-              )}
+                )*/}
 
               {window.location.href.match(/([^\/]*)\/*$/)[1] ==
                 "home#users" && (
