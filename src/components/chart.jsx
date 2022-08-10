@@ -77,6 +77,7 @@ const Chart = ({
   balance,
   dollar,
   ILS,
+  accountID,
 }) => {
   const data = buildData(info);
   const monthData = buildData(month);
@@ -203,14 +204,14 @@ const Chart = ({
                   {numberToFix(ILS / balance, 3) + " ILS"}
                 </div>
               </div>
-              <div className="flex w-7/12">
+              {/*<div className="flex w-7/12">
                 <div className="flex-1 px-3 text-left font-semibold">
                   Dollar
                 </div>
                 <div className="flex-1 pl-3 text-right">
                   {numberToFix(ILS / dollar, 3) + " ILS"}
                 </div>
-              </div>
+              </div>*/}
             </div>
             <div className="flex mt-10">
               <div className="flex items-center mr-4">
@@ -266,12 +267,20 @@ const Chart = ({
                 </label>
               </div>
             </div>
-            <button
-              onClick={handleClick}
-              class="mt-10 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-            >
-              Account info
-            </button>
+            <div>
+              <button
+                onClick={handleClick}
+                class="mt-10 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+              >
+                Account info
+              </button>
+              <label
+                htmlFor="month"
+                className="ml-6 mt-4 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                {"Your account ID:  "} {accountID}
+              </label>
+            </div>
           </div>
         </div>
       </div>

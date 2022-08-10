@@ -8,7 +8,9 @@ const HomeComponent = () => {
   const loggedInUser = localStorage.getItem("authenticated");
 
   let json = JSON.parse(loggedInUser);
+  let accountDetails = json.accountDetails;
   const currentBalance = json.accountDetails.balance;
+  const userDetails = json.userDetails;
   function padTo2Digits(num) {
     return num.toString().padStart(2, "0");
   }
@@ -585,9 +587,8 @@ const HomeComponent = () => {
               <div className="shrink-0"></div>
               <div>
                 <div className="text-3xl font-medium text-black">
-                  Welcome to LevCoin Bank{" "}
-                  {currentUser != undefined && currentUser.firstName}{" "}
-                  {currentUser != undefined && currentUser.lastName}
+                  Welcome to LevCoin Bank {json.userDetails.firstName}{" "}
+                  {json.userDetails.lastName}
                 </div>
               </div>
             </div>
@@ -600,6 +601,7 @@ const HomeComponent = () => {
                 <div className="mb-5 text-xl">The rightest is the current.</div>
               </div>
               <Chart
+                accountID={accountDetails._id}
                 dollar={dollar}
                 ILS={ILS}
                 balance={currentBalance}

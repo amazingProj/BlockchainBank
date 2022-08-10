@@ -17,21 +17,27 @@ const Transfer = () => {
 
     console.log(firstNameVar, lastNameVar, targetAccountIDVar, amountVar);
     const loggedInUser = localStorage.getItem("authenticated");
-    if (loggedInUser == {}) return;
 
     let json = JSON.parse(loggedInUser);
     let userDetails = json.userDetails;
     let accountDetails = json.accountDetails;
+    console.log(accountDetails._id);
+    let y = {
+      srcAccountId: accountDetails._id,
+      destAccountId: targetAccountIDVar,
+      amount: amountVar,
+    };
+    let t = {};
+    t["data"] = y;
     Axios({
       method: "POST",
       data: {
-        srcAccountId: accountDetails._id,
-        destAccountId: targetAccountIDVar,
-        amount: amountVar,
+        data: t,
       },
       withCredentials: true,
       url: "http://localhost:4000/routes/transaction/create",
     }).then((res) => {
+      console.log(res.data);
       toast("Successfully");
     });
   };
@@ -108,6 +114,7 @@ const Transfer = () => {
           </button>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 };
