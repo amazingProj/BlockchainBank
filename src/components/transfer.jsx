@@ -29,16 +29,23 @@ const Transfer = () => {
     };
     let t = {};
     t["data"] = y;
+    console.log(JSON.stringify(t));
+    //62f372f7277f9204862094b1
     Axios({
       method: "POST",
       data: {
-        data: t,
+        data: {
+          srcAccountId: accountDetails._id,
+          destAccountId: targetAccountIDVar,
+          amount: amountVar,
+        },
       },
       withCredentials: true,
       url: "http://localhost:4000/routes/transaction/create",
     }).then((res) => {
       console.log(res.data);
-      toast("Successfully");
+      //toast("Successfully");
+      toast(res.data.message);
     });
   };
 
