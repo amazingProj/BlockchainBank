@@ -1,4 +1,7 @@
 import React, { useRef } from "react";
+import Axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Transfer = () => {
   const firstName = useRef();
@@ -19,6 +22,18 @@ const Transfer = () => {
     let json = JSON.parse(loggedInUser);
     let userDetails = json.userDetails;
     let accountDetails = json.accountDetails;
+    Axios({
+      method: "POST",
+      data: {
+        srcAccountId: accountDetails._id,
+        destAccountId: targetAccountIDVar,
+        amount: amountVar,
+      },
+      withCredentials: true,
+      url: "http://localhost:4000/routes/transaction/create",
+    }).then((res) => {
+      toast("Successfully");
+    });
   };
 
   return (

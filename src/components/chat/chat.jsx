@@ -17,6 +17,7 @@ export default function Chat(props) {
 
   useEffect(() => {
     async function fetch() {
+      console.log(localStorage.getItem("chat-app-current-user"));
       if (!localStorage.getItem("chat-app-current-user")) {
         navigate("/login");
       } else {
