@@ -86,6 +86,7 @@ const Login = () => {
         window.location.replace("/home");
       } else if (res.data.message == "Manager authenticated") {
         toast(res.data.message);
+        console.log(res.data);
         localStorage.setItem(
           "authenticated",
           JSON.stringify({
@@ -94,13 +95,12 @@ const Login = () => {
             role: "Admin",
             userDetails: res.data.userDetails,
             accountDetails: res.data.accountDetails,
+            notify: res.data.nullRole,
           })
         );
         window.location.replace("/home");
-      } else if (res.data.message == "No user exists") {
-        toast.error("Wrong Username or Password.", toastOptions);
-      } else if (res.data.message == "Authentification failed") {
-        toast.error("Something went wrong.", toastOptions);
+      } else {
+        toast.error(res.data.message, toastOptions);
       }
     });
   };

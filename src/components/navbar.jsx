@@ -46,13 +46,26 @@ const Navbar = (props) => {
   }, []);
 
   useEffect(() => {
-    if (socket.current) {
+    /*if (socket.current) {
       socket.current.on("zero", (userDetails) => {
         console.log(userDetails);
         setNotification((prev) => [...prev, userDetails]);
       });
-    }
-  }, [notification]);
+    }*/
+    const loggedInUser = localStorage.getItem("authenticated");
+
+    let json = JSON.parse(loggedInUser);
+    let notifications = json.notify;
+    /*console.log(notifications);
+    if (notification) {
+      if (notifications.length > 0) {
+        setNotification([...notifications]);
+        console.log(notification);
+      }
+    }*/
+
+    // console.log(notification);
+  }, []);
 
   const handleClick = () => setNav(!nav);
 
@@ -61,6 +74,10 @@ const Navbar = (props) => {
     window.location.replace("/login");
   };
 
+  const handleClickNotify = (notify) => {
+    console.log(notify);
+    localStorage.setItem("notify", notify);
+  };
   return (
     <div>
       <div className="w-full h-[60px] z-10 bg-zinc-200 fixed drop-shadow-lg">
@@ -108,7 +125,15 @@ const Navbar = (props) => {
                                         <MenuItem>
                                           {" "}
                                           <a href="#new">
-                                            <li></li>
+                                            <li
+                                              onClick={handleClickNotify(
+                                                notify
+                                              )}
+                                            >
+                                              {notify.firstName}{" "}
+                                              {notify.lastName}{" "}
+                                              {"request a new account"}
+                                            </li>
                                           </a>
                                         </MenuItem>
                                       ) : (

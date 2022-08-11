@@ -52,6 +52,7 @@ const Private = () => {
               role: "User",
               userDetails: res.data.userDetails,
               accountDetails: res.data.accountDetails,
+              notify: res.data.nullRole,
             })
           );
           setIsAuth(true);

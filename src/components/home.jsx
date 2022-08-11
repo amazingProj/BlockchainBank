@@ -11,6 +11,7 @@ const HomeComponent = () => {
   let accountDetails = json.accountDetails;
   const currentBalance = json.accountDetails.balance;
   const userDetails = json.userDetails;
+  console.log(userDetails);
   function padTo2Digits(num) {
     return num.toString().padStart(2, "0");
   }
@@ -45,7 +46,7 @@ const HomeComponent = () => {
     let index = 1;
     for (let i = 0; i < month.length; ++i) {
       monNewIndex =
-        monIndex - i > 0 ? monIndex - i : monIndex - i + (month.length - 1);
+        monIndex - i >= 0 ? monIndex - i : monIndex - i + (month.length);
       result[index++] = month[monNewIndex];
     }
     return result;

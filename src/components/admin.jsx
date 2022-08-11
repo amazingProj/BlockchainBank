@@ -1,6 +1,12 @@
 import React from "react";
+import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 
 const Admin = () => {
+  const loggedInUser = localStorage.getItem("authenticated");
+  let json = JSON.parse(loggedInUser);
+  const userDetails = json.userDetails;
+  let accountDetails = json.accountDetails;
+  console.log("account", accountDetails);
   return (
     <div>
       <div className="mb-20">
@@ -10,9 +16,20 @@ const Admin = () => {
             <div className="text-5xl font-medium text-black">
               Welcome to LevCoin Bank
             </div>
-            <p className="text-slate-500 text-2xl">
-              Hello admin, You have a new updates!
-            </p>
+          </div>
+        </div>
+        <div>
+          <p className="text-center text-slate-500 text-2xl">
+            Hello {userDetails.username},
+          </p>
+
+          <div className="text-center text-slate-500 text-2xl">
+            You received new updates, please check your notifications!
+            {/* <BellIcon
+              className="mr-5 ml-5 text-center"
+              width={30}
+              height={30}
+            /> */}
           </div>
         </div>
       </div>

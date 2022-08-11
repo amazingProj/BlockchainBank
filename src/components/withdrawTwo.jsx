@@ -35,7 +35,8 @@ function WithdrawTwo() {
   };
 
   const handleSubmit = () => {
-    let loanAmount = amount.current.value;
+    let loanAmount = Number(amount.current.value);
+    console.log(typeof loanAmount);
     let loanDuration = duration.current.value;
     const loggedInUser = localStorage.getItem("authenticated");
     if (loggedInUser == {}) return;

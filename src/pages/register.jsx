@@ -13,6 +13,7 @@ const Register = (props) => {
   const email = useRef();
   const username = useRef();
   const password = useRef();
+  const phone = useRef();
   const confirmedPassword = useRef();
   const message = useRef();
   const birthday = useRef();
@@ -79,9 +80,10 @@ const Register = (props) => {
       let user = {};
       user["username"] = username.current.value;
       user["password"] = passwordVAR;
-      user["firstName"] = firstName.current.firstName;
-      user["lastName"] = lastName.current.firstName;
+      user["firstName"] = firstName.current.value;
+      user["lastName"] = lastName.current.value;
       user["birthday"] = birthday.current.value;
+      user["phone"] = phone.current.value;
       console.log(message.current.value);
       user["email"] = email.current.value;
       user["message"] = message.current.value;
@@ -160,6 +162,21 @@ const Register = (props) => {
                   Enter birthday
                 </label>
                 <BirthdayPicker reference={birthday} />
+              </div>
+
+              <div className="mb-6">
+                <label
+                  htmlFor="country"
+                  className="mb-2 block text-sm font-medium text-gray-700"
+                >
+                  Phone number
+                </label>
+                <input
+                  ref={phone}
+                  type="text"
+                  className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  placeholder="Phone"
+                />
               </div>
 
               {/* Email input */}
