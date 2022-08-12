@@ -56,8 +56,8 @@ const Navbar = (props) => {
 
     let json = JSON.parse(loggedInUser);
     let notifications = json.notify;
-    /*console.log(notifications);
-    if (notification) {
+    console.log(notifications);
+    /*if (notification) {
       if (notifications.length > 0) {
         setNotification([...notifications]);
         console.log(notification);
